@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Resource",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Character/Character.gd"
+}, {
+"base": "Sprite",
+"class": "CharacterNode",
+"language": "GDScript",
+"path": "res://Character/CharacterNode.gd"
+} ]
+_global_script_class_icons={
+"Character": "",
+"CharacterNode": ""
+}
+
 [application]
 
 config/name="Magic Wars"
@@ -16,8 +32,7 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/width=400
-window/size/height=300
+window/size/width=800
 window/size/test_width=1200
 window/size/test_height=900
 
