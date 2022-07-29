@@ -44,7 +44,6 @@ func calculate_turn_order():
 		var player = player_order[i%2]
 		var character = int(floor(i/2))%Players[player].TurnOrder.size()
 		var character_node = Players[player].TurnOrder[character]
-		print("Adding character %s" % character_node.character.characterName)
 		global_turn_order.append(character_node)
 
 func update_ui():

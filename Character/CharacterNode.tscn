@@ -24,9 +24,5 @@ margin_bottom = -34.0
 text = "5"
 align = 2
 
-[node name="Target" type="Button" parent="."]
-margin_left = -32.0
-margin_top = -73.0
-margin_right = 32.0
-margin_bottom = -53.0
-text = "Target"
+[node name="Top" type="Node2D" parent="."]
+position = Vector2( -32, -48 )
