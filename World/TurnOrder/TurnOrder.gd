@@ -81,7 +81,7 @@ class SpeedSorter:
 	static func sort_speed(a: CharacterNode, b: CharacterNode):
 		return a.character.speed > b.character.speed
 
-func _on_NextTurnButton_pressed():
+func go_to_next_turn():
 	var next_player = get_next_player(get_player(current_turn))
 	var player_dict = Players[next_player]
 	player_dict.CurrentTurn = (player_dict.CurrentTurn + 1) % player_dict.TurnOrder.size()
