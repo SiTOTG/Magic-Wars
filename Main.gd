@@ -39,10 +39,16 @@ func _check_gameover_condition():
 	var size = get_tree().get_nodes_in_group("P1 Characters").size()
 	print("P1: %d remaining" % size)
 	if size == 0:
-		print("P2 Wins!!!")
-		var timer = get_tree().create_timer(3)
-		timer.connect("timeout", get_tree(), "reload_current_scene")
-		return
+		if get_tree().get_nodes_in_group("P2 Characters").size() == 0 :
+			print("DRAW!?")
+			var timer = get_tree().create_timer(3)
+			timer.connect("timeout", get_tree(), "reload_current_scene")
+			return
+		else:
+			print("P2 Wins!!!")
+			var timer = get_tree().create_timer(3)
+			timer.connect("timeout", get_tree(), "reload_current_scene")
+			return
 	size = get_tree().get_nodes_in_group("P2 Characters").size()
 	print("P2: %d remaining" % size)
 	if size == 0:
