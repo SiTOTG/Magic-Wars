@@ -2,49 +2,61 @@ extends Control
 
 onready var character_list_ui = $ListArea/CharacterList
 onready var current_turn_indicator = $CurrentTurnIndicator
-var Players := {
-	"P1 Characters" : {"TurnOrder": [],
-		"CurrentTurn": 0},
-	"P2 Characters" : {"TurnOrder": [],
-		"CurrentTurn": 0}
+#var players := {
+#	"P1 Characters" : {"TurnOrder": [],
+#		"CurrentTurn": 0},
+#	"P2 Characters" : {"TurnOrder": [],
+#		"CurrentTurn": 0}
+#}
+var players = {
+	"P1 Characters" : Player.new(),
+	"P2 Characters" : Player.new()
 }
 
 var current_turn: CharacterNode = null
 var player_order: Array = []
 var global_turn_order: Array = []
 
-export (int, 1, 20) var max_display_turns = 16
+export (int, 1, 20) var max_display_turns = 8
 
 func _ready():
-	for group in Players:
+	for group in players:
 		for character_node in get_tree().get_nodes_in_group(group):
 			if character_node is CharacterNode:
-				Players[group].TurnOrder.append(character_node)
+				players[group].add_character(character_node)
+				character_node.connect("death", self, "_on_character_death", [character_node])
 
-		Players[group].TurnOrder.sort_custom(SpeedSorter, "sort_speed")
+		players[group].turn_order.sort_custom(SpeedSorter, "sort_speed")
 
-	if Players["P1 Characters"].TurnOrder[0].character.speed > Players["P2 Characters"].TurnOrder[0].character.speed:
-		current_turn = Players["P1 Characters"].TurnOrder[0]
+	if players["P1 Characters"].get_top_speed() > players["P2 Characters"].get_top_speed():
+		current_turn = players["P1 Characters"].get_current()
 		player_order = ["P1 Characters", "P2 Characters"]
 	else:
-		current_turn = Players["P2 Characters"].TurnOrder[0]
+		current_turn = players["P2 Characters"].get_current()
 		player_order = ["P2 Characters", "P1 Characters"]
 	calculate_turn_order()
 	update_ui()
 	
 func calculate_turn_order():
 	global_turn_order.clear()
-	var max_characters = 0
-	for player_name in Players:
-		var player = Players[player_name]
-		var n = player.TurnOrder.size()
-		if n > max_characters: max_characters = n
-	
-	for i in range(max_characters*2):
-		var player = player_order[i%2]
-		var character = int(floor(i/2))%Players[player].TurnOrder.size()
-		var character_node = Players[player].TurnOrder[character]
-		global_turn_order.append(character_node)
+
+	if players["P1 Characters"].get_number_of_characters() == 0:
+		global_turn_order = players["P2 Characters"].turn_order.duplicate()
+		return
+	if players["P2 Characters"].get_number_of_characters() == 0:
+		global_turn_order = players["P1 Characters"].turn_order.duplicate()
+		return
+	var p1 = players["P1 Characters"].copy()
+	var p2 = players["P2 Characters"].copy()
+	var current_idx = player_order.find(get_player(current_turn))
+	for i in range(current_idx,max_display_turns+current_idx):
+		var player_name = player_order[i % player_order.size()]
+		if player_name == "P1 Characters":
+			global_turn_order.append(p1.get_current())
+		else:
+			global_turn_order.append(p2.get_current())
+			p1.go_to_next_turn()
+			p2.go_to_next_turn()
 
 func update_ui():
 	for child in character_list_ui.get_children():
@@ -57,17 +69,19 @@ func update_ui():
 	
 	update_turn_ui()
 
-func get_player(character : CharacterNode):
+func get_player(character : CharacterNode) -> String:
 	for group in character.get_groups():
-		if group in Players:
-			return group	
-	return null
+		if group in players:
+			return group
+	printerr("Non-existing player!")
+	return ""
 
-func get_next_player(player: String):
-	for player_name in Players:
+func get_next_player(player: String) -> String:
+	for player_name in players:
 		if player_name != player:
 			return player_name
-	return null
+	printerr("Non-existing player!")
+	return ""
 
 func update_turn_ui():
 	if current_turn:
@@ -81,8 +95,62 @@ class SpeedSorter:
 		return a.character.speed > b.character.speed
 
 func go_to_next_turn():
+	if not current_turn:
+		return
 	var next_player = get_next_player(get_player(current_turn))
-	var player_dict = Players[next_player]
-	player_dict.CurrentTurn = (player_dict.CurrentTurn + 1) % player_dict.TurnOrder.size()
-	current_turn = player_dict.TurnOrder[player_dict.CurrentTurn]
-	update_turn_ui()
+	if next_player == player_order[0]:
+		for player in players:
+			players[player].go_to_next_turn()
+	current_turn = players[next_player].get_current()
+	calculate_turn_order()
+	update_ui()
+
+func _on_character_death(character: CharacterNode):
+	var player_name = get_player(character)
+	var player: Player = players[player_name]
+	player.remove_character(character)
+	if player_name == get_player(current_turn):
+		current_turn = player.get_current()
+	calculate_turn_order()
+	update_ui()
+
+class Player:
+	var turn_order: Array = []
+	var current: int = 0
+	
+	func add_character(value: CharacterNode):
+		turn_order.append(value)
+		
+	func get_top_speed():
+		if turn_order.size() == 0:
+			return
+		return turn_order[0].character.speed
+	
+	func get_current():
+		if turn_order.size() == 0:
+			return
+		return turn_order[current]
+	
+	func get_number_of_characters():
+		return turn_order.size()
+	
+	func go_to_next_turn():
+		if turn_order.size() == 0:
+			return
+		current = (current +1) % turn_order.size()
+
+	func remove_character(character: CharacterNode):
+		var pos = turn_order.find(character)
+		if pos < current:
+			current -= 1
+		turn_order.remove(pos)
+		if turn_order.size() == 0:
+			return
+		current = current % turn_order.size()
+		return current
+
+	func copy() -> Player:
+		var new = Player.new()
+		new.turn_order = turn_order.duplicate()
+		new.current = current
+		return new
