@@ -1,13 +1,9 @@
+class_name TurnOrder
 extends Control
 
 onready var character_list_ui = $ListArea/CharacterList
 onready var current_turn_indicator = $CurrentTurnIndicator
-#var players := {
-#	"P1 Characters" : {"TurnOrder": [],
-#		"CurrentTurn": 0},
-#	"P2 Characters" : {"TurnOrder": [],
-#		"CurrentTurn": 0}
-#}
+
 var players = {
 	"P1 Characters" : Player.new(),
 	"P2 Characters" : Player.new()

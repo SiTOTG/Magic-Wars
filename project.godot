@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Resource",
+"class": "Action",
+"language": "GDScript",
+"path": "res://Actions/Action.gd"
+}, {
+"base": "Action",
+"class": "Attack",
+"language": "GDScript",
+"path": "res://Actions/Attack.gd"
+}, {
+"base": "Resource",
 "class": "Character",
 "language": "GDScript",
 "path": "res://Character/Character.gd"
@@ -18,10 +28,30 @@ _global_script_classes=[ {
 "class": "CharacterNode",
 "language": "GDScript",
 "path": "res://Character/CharacterNode.gd"
+}, {
+"base": "Resource",
+"class": "Selector",
+"language": "GDScript",
+"path": "res://Actions/Selectors/Selector.gd"
+}, {
+"base": "Selector",
+"class": "SingleTargetSelector",
+"language": "GDScript",
+"path": "res://Actions/Selectors/SingleTargetSelector.gd"
+}, {
+"base": "Control",
+"class": "TurnOrder",
+"language": "GDScript",
+"path": "res://World/TurnOrder/TurnOrder.gd"
 } ]
 _global_script_class_icons={
+"Action": "",
+"Attack": "",
 "Character": "",
-"CharacterNode": ""
+"CharacterNode": "",
+"Selector": "",
+"SingleTargetSelector": "",
+"TurnOrder": ""
 }
 
 [application]
