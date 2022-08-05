@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Actions/Attack.gd" type="Script" id=1]
+[ext_resource path="res://Actions/Selectors/SingleTargetSelector.gd" type="Script" id=2]
+[ext_resource path="res://Actions/Selectors/Targets/Enemy.tres" type="Resource" id=3]
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 2 )
+exclude = [  ]
+include = [ ExtResource( 3 ) ]
+
+[sub_resource type="InputEventAction" id=1]
+action = "Attack"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[resource]
+script = ExtResource( 1 )
+selector = SubResource( 3 )
+active = false
+action_name = "Attack"
+shortcut = SubResource( 2 )

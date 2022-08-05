@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actions/Action.gd"
 }, {
+"base": "VBoxContainer",
+"class": "ActionList",
+"language": "GDScript",
+"path": "res://Actions/ActionList.gd"
+}, {
 "base": "Action",
 "class": "Attack",
 "language": "GDScript",
@@ -29,15 +34,35 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Character/CharacterNode.gd"
 }, {
+"base": "Action",
+"class": "Defend",
+"language": "GDScript",
+"path": "res://Actions/Defend.gd"
+}, {
+"base": "Target",
+"class": "EnemyTarget",
+"language": "GDScript",
+"path": "res://Actions/Selectors/Targets/Enemy.gd"
+}, {
 "base": "Resource",
 "class": "Selector",
 "language": "GDScript",
 "path": "res://Actions/Selectors/Selector.gd"
 }, {
+"base": "Target",
+"class": "Self",
+"language": "GDScript",
+"path": "res://Actions/Selectors/Targets/Self.gd"
+}, {
 "base": "Selector",
 "class": "SingleTargetSelector",
 "language": "GDScript",
 "path": "res://Actions/Selectors/SingleTargetSelector.gd"
+}, {
+"base": "Resource",
+"class": "Target",
+"language": "GDScript",
+"path": "res://Actions/Selectors/Targets/Target.gd"
 }, {
 "base": "Control",
 "class": "TurnOrder",
@@ -46,11 +71,16 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Action": "",
+"ActionList": "",
 "Attack": "",
 "Character": "",
 "CharacterNode": "",
+"Defend": "",
+"EnemyTarget": "",
 "Selector": "",
+"Self": "",
 "SingleTargetSelector": "",
+"Target": "",
 "TurnOrder": ""
 }
 
@@ -59,6 +89,10 @@ _global_script_class_icons={
 config/name="Magic Wars"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+GlobalTree="*res://Tree.gd"
 
 [display]
 

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://Actions/Defend.gd" type="Script" id=1]
+[ext_resource path="res://Actions/Selectors/SingleTargetSelector.gd" type="Script" id=2]
+[ext_resource path="res://Actions/Selectors/Targets/Self.tres" type="Resource" id=3]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 2 )
+exclude = [  ]
+include = [ ExtResource( 3 ) ]
+
+[sub_resource type="InputEventAction" id=2]
+action = "Defend"
+
+[sub_resource type="ShortCut" id=3]
+shortcut = SubResource( 2 )
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource( 1 )
+selector = SubResource( 1 )
+active = false
+action_name = "Defend"
+shortcut = SubResource( 3 )

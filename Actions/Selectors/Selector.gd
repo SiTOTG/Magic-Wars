@@ -3,10 +3,19 @@ extends Resource
 
 var origin: CharacterNode
 var characters: Array
-var turn_order: TurnOrder
+var turn_order: TurnOrder setget set_turnorder
 var ui: CanvasLayer
 
+export (Array, Resource) var exclude = []
+export (Array, Resource) var include = []
+
 signal finished_selection(characters)
+
+func set_turnorder(value):
+	turn_order = value
+	for inclusion in include:
+		inclusion = inclusion as Target
+		inclusion.turn_order = value
 
 func _init():
 	self.connect("finished_selection", self, "_on_finish_selection")
