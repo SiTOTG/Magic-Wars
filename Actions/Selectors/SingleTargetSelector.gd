@@ -8,11 +8,7 @@ func start_selection():
 	if not include:
 		inclusion = GlobalTree.get_tree().get_nodes_in_group("Characters")
 	else:
-		for target in include:
-			target = target as Target
-			for character in target.get_targets():
-				if not character in inclusion:
-					inclusion.append(character)
+		inclusion.append_array(get_candidates())
 	for character in inclusion:
 		if character is CharacterNode:
 			var button = Button.new()

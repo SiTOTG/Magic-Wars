@@ -20,6 +20,16 @@ func set_turnorder(value):
 func _init():
 	self.connect("finished_selection", self, "_on_finish_selection")
 
+func get_candidates() -> Array:
+	var inclusion = []
+	for target in include:
+		target = target as Target
+		for character in target.get_targets():
+			if not character in inclusion:
+				inclusion.append(character)
+	# TODO: Exclude
+	return inclusion
+
 func start_selection():
 	printerr("Start selection not implemented")
 

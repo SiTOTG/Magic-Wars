@@ -11,8 +11,8 @@ func _ready():
 		action.turn_order = turn_order
 		action.ui = $CanvasLayer
 		action.connect("finished_action", self, "_on_finished_action")
-		action_list.add_action(action)
 	
+		action_list.add_action(action)
 	for character in get_tree().get_nodes_in_group("Characters"):
 		if character is CharacterNode:
 			character.connect("death", self, "_check_gameover_condition")
