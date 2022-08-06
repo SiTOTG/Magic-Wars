@@ -15,6 +15,10 @@ func start_selection():
 			button.rect_position = character.get_node("Top").global_position
 			button.text = "Target"
 			ui.add_child(button)
+			if inclusion.size() == 1:
+				button.shortcut = ShortCut.new()
+				button.shortcut.shortcut = InputEventAction.new()
+				button.shortcut.shortcut.action = "ui_accept"
 			button.connect("pressed", self, "selection_callback", [character])
 			temp_buttons.append(button)
 

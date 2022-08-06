@@ -7,3 +7,4 @@
 script = ExtResource( 1 )
 exclude = [  ]
 include = [ ExtResource( 2 ) ]
+should_confirm = true
