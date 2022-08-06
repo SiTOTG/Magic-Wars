@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Character/CharacterNode.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Dummy/Dummy2.tres" type="Resource" id=2]
@@ -7,8 +7,18 @@
 resource_local_to_scene = true
 resource_name = "Attack"
 
+[sub_resource type="Animation" id=2]
+resource_local_to_scene = true
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=3]
+resource_local_to_scene = true
+resource_name = "Special"
+
 [node name="CharacterNode2" instance=ExtResource( 1 )]
 character = ExtResource( 2 )
 
 [node name="AnimationPlayer" parent="." index="0"]
 anims/Attack = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/Special = SubResource( 3 )

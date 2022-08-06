@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Character/Dummy/CharacterNode1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Actions/DummyAttack.tres" type="Resource" id=7]
 [ext_resource path="res://Actions/DummyDefend.tres" type="Resource" id=8]
 [ext_resource path="res://Actions/DummyAttackAll.tres" type="Resource" id=9]
+[ext_resource path="res://Assets/dummy.png" type="Texture" id=10]
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -94,34 +95,40 @@ margin_bottom = 34.0
 margin_right = 228.0
 margin_bottom = 23.0
 
-[node name="CharacterNode1" parent="." groups=["P1 Characters"] instance=ExtResource( 1 )]
-position = Vector2( 56, 112 )
+[node name="YSort" type="YSort" parent="."]
+
+[node name="CharacterNode1" parent="YSort" groups=["P1 Characters"] instance=ExtResource( 1 )]
+position = Vector2( 296, 120 )
 character = SubResource( 1 )
 
-[node name="CharacterNode2" parent="." groups=["P1 Characters"] instance=ExtResource( 1 )]
-position = Vector2( 56, 248 )
+[node name="CharacterNode2" parent="YSort" groups=["P1 Characters"] instance=ExtResource( 1 )]
+position = Vector2( 294, 283 )
 character = SubResource( 2 )
 
-[node name="CharacterNode3" parent="." groups=["P1 Characters"] instance=ExtResource( 4 )]
-position = Vector2( 56, 392 )
+[node name="CharacterNode3" parent="YSort" groups=["P1 Characters"] instance=ExtResource( 4 )]
+position = Vector2( 296, 446 )
 character = SubResource( 7 )
 
-[node name="CharacterNode4" parent="." groups=["P1 Characters"] instance=ExtResource( 4 )]
-position = Vector2( 56, 536 )
+[node name="CharacterNode4" parent="YSort" groups=["P1 Characters"] instance=ExtResource( 4 )]
+position = Vector2( 303, 615 )
 character = SubResource( 3 )
 
-[node name="CharacterNode5" parent="." groups=["P2 Characters"] instance=ExtResource( 4 )]
-position = Vector2( 448, 126 )
+[node name="CharacterNode5" parent="YSort" groups=["P2 Characters"] instance=ExtResource( 4 )]
+position = Vector2( 738, 148 )
+texture = ExtResource( 10 )
 character = SubResource( 4 )
 
-[node name="CharacterNode6" parent="." groups=["P2 Characters"] instance=ExtResource( 4 )]
-position = Vector2( 448, 248 )
+[node name="CharacterNode6" parent="YSort" groups=["P2 Characters"] instance=ExtResource( 4 )]
+position = Vector2( 747, 296 )
+texture = ExtResource( 10 )
 character = SubResource( 5 )
 
-[node name="CharacterNode7" parent="." groups=["P2 Characters"] instance=ExtResource( 4 )]
-position = Vector2( 448, 368 )
+[node name="CharacterNode7" parent="YSort" groups=["P2 Characters"] instance=ExtResource( 4 )]
+position = Vector2( 756, 449 )
+texture = ExtResource( 10 )
 character = SubResource( 6 )
 
-[node name="CharacterNode8" parent="." groups=["P2 Characters"] instance=ExtResource( 4 )]
-position = Vector2( 448, 528 )
+[node name="CharacterNode8" parent="YSort" groups=["P2 Characters"] instance=ExtResource( 4 )]
+position = Vector2( 740, 594 )
+texture = ExtResource( 10 )
 character = SubResource( 6 )

@@ -3,11 +3,11 @@
 [ext_resource path="res://Actions/Attack.gd" type="Script" id=1]
 [ext_resource path="res://Actions/Selectors/AllTargetSelector.tres" type="Resource" id=2]
 
-[sub_resource type="InputEventKey" id=3]
-scancode = 16777220
+[sub_resource type="InputEventAction" id=1]
+action = "Special"
 
 [sub_resource type="ShortCut" id=2]
-shortcut = SubResource( 3 )
+shortcut = SubResource( 1 )
 
 [resource]
 script = ExtResource( 1 )
@@ -15,3 +15,5 @@ selector = ExtResource( 2 )
 active = false
 action_name = "Attack All"
 shortcut = SubResource( 2 )
+attack_animation = "Attack"
+optional_chain = [ "Special" ]

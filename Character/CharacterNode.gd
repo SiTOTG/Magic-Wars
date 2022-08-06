@@ -39,3 +39,7 @@ func set_name_visibility(value):
 
 func start_turn():
 	is_defending = false
+
+func play_animation(animation: String):
+	animation_player.play(animation)
+	animation_player.queue("Idle")

@@ -21,3 +21,5 @@ selector = SubResource( 3 )
 active = false
 action_name = "Attack"
 shortcut = SubResource( 2 )
+attack_animation = "Attack"
+optional_chain = [  ]
