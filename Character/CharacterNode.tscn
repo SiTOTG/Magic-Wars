@@ -26,21 +26,5 @@ anims/Attack = SubResource( 1 )
 anims/Idle = SubResource( 2 )
 anims/Special = SubResource( 3 )
 
-[node name="HP" type="Label" parent="."]
-margin_left = -32.0
-margin_top = -48.0
-margin_right = 32.0
-margin_bottom = -34.0
-text = "5"
-align = 2
-
 [node name="Top" type="Node2D" parent="."]
 position = Vector2( -32, -48 )
-
-[node name="Name" type="Label" parent="."]
-margin_left = -32.0
-margin_top = -67.0
-margin_right = 32.0
-margin_bottom = -53.0
-text = "Name"
-clip_text = true

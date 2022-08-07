@@ -15,5 +15,5 @@ selector = ExtResource( 2 )
 active = false
 action_name = "Attack All"
 shortcut = SubResource( 2 )
-attack_animation = "Attack"
-optional_chain = [ "Special" ]
+attack_animation = "Special"
+optional_chain = [  ]

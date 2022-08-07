@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Character/CharacterSlot.gd" type="Script" id=2]
+[ext_resource path="res://Assets/hp/progress.png" type="Texture" id=3]
+[ext_resource path="res://Assets/hp/under.png" type="Texture" id=4]
+
+[node name="CharacterSlot" type="Control"]
+margin_right = 288.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 240, 160 )
+script = ExtResource( 2 )
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="hpbar" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -108.0
+margin_top = 19.0
+margin_right = 42.0
+margin_bottom = 27.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+
+[node name="current" type="TextureRect" parent="hpbar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -288.0
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 2
+
+[node name="NameLabel" type="Label" parent="."]
+margin_right = 134.0
+margin_bottom = 14.0
+text = "Name"
