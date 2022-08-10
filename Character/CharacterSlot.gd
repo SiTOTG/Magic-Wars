@@ -1,4 +1,5 @@
 tool
+class_name CharacterSlot
 extends Control
 
 var character: CharacterNode = null

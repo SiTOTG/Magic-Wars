@@ -36,3 +36,17 @@ stretch_mode = 2
 margin_right = 134.0
 margin_bottom = 14.0
 text = "Name"
+
+[node name="SpecialContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_top = 30.0
+margin_bottom = 38.0
+
+[node name="TargetButtonPosition" type="ReferenceRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -33.0
+margin_top = -3.0
+margin_right = -13.0
+margin_bottom = 17.0
+border_color = Color( 0, 1, 0.0627451, 1 )

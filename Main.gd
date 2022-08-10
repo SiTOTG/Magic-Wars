@@ -3,7 +3,7 @@ extends Control
 export (Array, Resource) var actions = []
 
 onready var turn_order = $CanvasLayer/TurnOrder
-onready var action_list = $CanvasLayer/MarginContainer/ActionList
+onready var action_list = $CanvasLayer/ActionContainer/ActionList
 
 func _ready():
 	for action in actions:
