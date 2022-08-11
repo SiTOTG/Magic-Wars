@@ -28,6 +28,10 @@ func set_options(value):
 	for action in options:
 		action.connect("finished_action", self, "finish_action")
 
+func add_option(option: Resource):
+	options.append(option)
+	option.connect("finished_action", self, "finish_action")
+
 func do_activate():
 	vBoxContainer = VBoxContainer.new()
 	actionList = ActionListPackedScene.instance()

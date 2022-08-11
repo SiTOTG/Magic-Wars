@@ -7,9 +7,11 @@
 action = "Special"
 
 [sub_resource type="ShortCut" id=2]
+resource_local_to_scene = true
 shortcut = SubResource( 1 )
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource( 1 )
 selector = ExtResource( 2 )
 active = false
