@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actions/Selectors/SingleTargetSelector.gd"
 }, {
+"base": "Node2D",
+"class": "SpecialNode",
+"language": "GDScript",
+"path": "res://Character/Special/SpecialNode.gd"
+}, {
 "base": "Resource",
 "class": "Target",
 "language": "GDScript",
@@ -92,6 +97,7 @@ _global_script_class_icons={
 "Selector": "",
 "Self": "",
 "SingleTargetSelector": "",
+"SpecialNode": "",
 "Target": "",
 "TurnOrder": ""
 }

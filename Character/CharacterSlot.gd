@@ -23,6 +23,7 @@ func init_ready():
 func init_character(child: CharacterNode):
 	character = child
 	character.centered = false
+# warning-ignore:return_value_discarded
 	character.connect("hp_updated", self, "_on_hp_updated")
 	nameLabel = $NameLabel
 	nameLabel.text = character.character.characterName

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Character/CharacterNode.gd" type="Script" id=2]
 [ext_resource path="res://Character/Dummy/Dummy.tres" type="Resource" id=3]
+[ext_resource path="res://Character/Special/Magic/MagicNode.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_local_to_scene = true
@@ -28,3 +29,7 @@ anims/Special = SubResource( 3 )
 
 [node name="Top" type="Node2D" parent="."]
 position = Vector2( -32, -48 )
+
+[node name="Specials" type="Node2D" parent="."]
+
+[node name="Magic" parent="Specials" instance=ExtResource( 4 )]

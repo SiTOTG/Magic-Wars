@@ -9,6 +9,7 @@ var ui: CanvasLayer
 export (Array, Resource) var exclude = []
 export (Array, Resource) var include = []
 
+# warning-ignore:unused_signal
 signal finished_selection(characters)
 
 func set_turnorder(value):
@@ -18,6 +19,7 @@ func set_turnorder(value):
 		inclusion.turn_order = value
 
 func _init():
+	# warning-ignore:return_value_discarded
 	self.connect("finished_selection", self, "_on_finish_selection")
 
 func get_candidates() -> Array:
@@ -36,5 +38,5 @@ func start_selection():
 func clear_selection():
 	printerr("Clear selection not implemented")
 
-func _on_finish_selection(selected):
+func _on_finish_selection(_selected):
 	self.clear_selection()
