@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Character/Dummy/CharacterNode1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Actions/DummyDefend.tres" type="Resource" id=8]
 [ext_resource path="res://Assets/dummy.png" type="Texture" id=10]
 [ext_resource path="res://Character/CharacterSlot.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Actions/Selectors/ConfirmButton.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 5 )
@@ -71,16 +72,19 @@ actions = [ ExtResource( 7 ), ExtResource( 8 ) ]
 
 [node name="TurnOrder" parent="CanvasLayer" instance=ExtResource( 3 )]
 
-[node name="ActionContainer" type="ScrollContainer" parent="CanvasLayer"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -258.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 208.0
+[node name="ActionContainer" type="MarginContainer" parent="CanvasLayer"]
+margin_left = 822.0
+margin_top = 34.0
+margin_right = 1057.0
+margin_bottom = 238.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CanvasLayer/ActionContainer"]
+margin_right = 235.0
+margin_bottom = 204.0
 
 [node name="ActionList" parent="CanvasLayer/ActionContainer" instance=ExtResource( 6 )]
-margin_bottom = 0.0
+margin_right = 235.0
+margin_bottom = 204.0
 size_flags_horizontal = 3
 
 [node name="ConfirmBox" type="MarginContainer" parent="CanvasLayer"]
@@ -205,3 +209,11 @@ margin_bottom = 664.0
 position = Vector2( 82, 96 )
 centered = false
 character = SubResource( 3 )
+
+[node name="ConfirmButton" parent="." instance=ExtResource( 12 )]
+
+[node name="ConfirmButton" parent="ConfirmButton" instance=ExtResource( 12 )]
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0
