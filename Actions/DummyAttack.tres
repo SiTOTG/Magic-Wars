@@ -16,6 +16,7 @@ action = "Attack"
 shortcut = SubResource( 1 )
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource( 1 )
 selector = SubResource( 3 )
 active = false

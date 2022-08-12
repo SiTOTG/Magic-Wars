@@ -34,17 +34,30 @@ func _init():
 		selector.ui = ui
 
 func set_active(value):
+	if active == value:
+		return
 	active = value
 	if active:
-		selector.start_selection()
+		do_activate()
 	else:
-		selector.clear_selection()
+		do_deactivate()
 
 func _apply_action(targets: Array):
 	do_apply_action(targets)
+	self.active = false
 	emit_signal("finished_action")
 
 
 ## Extension points
+func do_activate():
+	selector.start_selection()
+
+func do_deactivate():
+	selector.clear_selection()
+
+# warning-ignore:unused_argument
 func do_apply_action(targets: Array):
 	printerr("Action not implemented...")
+	
+func is_available() -> bool:
+	return true

@@ -11,6 +11,7 @@ const default_include = preload("res://Actions/Selectors/Targets/Enemy.tres")
 func _init():
 	confirm_button = ConfirmButton.instance()
 	confirm_button.text = "Confirm Attack All"
+	confirm_button.connect("pressed", self, "_confirm_callback")
 
 func start_selection():
 	if not self.ui:
@@ -19,7 +20,6 @@ func start_selection():
 		var confirm_box = self.ui.find_node("ConfirmBox")
 		if not confirm_button in confirm_box.get_children():
 			confirm_box.add_child(confirm_button)
-			confirm_button.connect("pressed", self, "_confirm_callback")
 	else:
 		finish_selection()
 

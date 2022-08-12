@@ -13,6 +13,7 @@ include = [ ExtResource( 3 ) ]
 action = "Defend"
 
 [sub_resource type="ShortCut" id=3]
+resource_local_to_scene = true
 shortcut = SubResource( 2 )
 
 [resource]

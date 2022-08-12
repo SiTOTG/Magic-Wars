@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
+[ext_resource path="res://Character/Special/BarUI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/CharacterSlot.gd" type="Script" id=2]
 [ext_resource path="res://Assets/hp/progress.png" type="Texture" id=3]
 [ext_resource path="res://Assets/hp/under.png" type="Texture" id=4]
@@ -14,25 +15,56 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="hpbar" type="TextureRect" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -108.0
-margin_top = 19.0
-margin_right = 42.0
-margin_bottom = 27.0
-texture = ExtResource( 4 )
-stretch_mode = 2
+[node name="hpbar" parent="." instance=ExtResource( 1 )]
+anchor_bottom = 0.0
+margin_left = 36.0
+margin_right = -102.0
+margin_bottom = 8.0
 
-[node name="current" type="TextureRect" parent="hpbar"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = -288.0
+[node name="background" parent="hpbar" index="0"]
+margin_top = 19.0
+margin_bottom = 19.0
+texture = ExtResource( 4 )
+
+[node name="current" parent="hpbar/background" index="0"]
 texture = ExtResource( 3 )
-expand = true
-stretch_mode = 2
 
 [node name="NameLabel" type="Label" parent="."]
 margin_right = 134.0
 margin_bottom = 14.0
 text = "Name"
+
+[node name="SpecialContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_top = 30.0
+margin_bottom = 38.0
+
+[node name="VBoxContainer" type="HBoxContainer" parent="SpecialContainer"]
+margin_right = 288.0
+margin_bottom = 8.0
+size_flags_horizontal = 3
+
+[node name="mpbar" parent="SpecialContainer/VBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 0.0
+margin_bottom = 8.0
+
+[node name="background" parent="SpecialContainer/VBoxContainer/mpbar" index="0"]
+margin_left = 36.0
+margin_right = 186.0
+
+[node name="current" parent="SpecialContainer/VBoxContainer/mpbar/background" index="0"]
+margin_right = -150.0
+
+[node name="TargetButtonPosition" type="ReferenceRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -33.0
+margin_top = -3.0
+margin_right = -13.0
+margin_bottom = 17.0
+border_color = Color( 0, 1, 0.0627451, 1 )
+
+[editable path="hpbar"]
+[editable path="SpecialContainer/VBoxContainer/mpbar"]

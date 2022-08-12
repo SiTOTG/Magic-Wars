@@ -8,9 +8,9 @@
 [ext_resource path="res://Actions/ActionList.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actions/DummyAttack.tres" type="Resource" id=7]
 [ext_resource path="res://Actions/DummyDefend.tres" type="Resource" id=8]
-[ext_resource path="res://Actions/DummyAttackAll.tres" type="Resource" id=9]
 [ext_resource path="res://Assets/dummy.png" type="Texture" id=10]
 [ext_resource path="res://Character/CharacterSlot.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Actions/Selectors/ConfirmButton.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 5 )
@@ -18,6 +18,7 @@ speed = 1
 characterName = "P2C1"
 max_hp = 1
 damage = 1
+max_mp = 100
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 5 )
@@ -25,6 +26,7 @@ speed = 1
 characterName = "P2C2"
 max_hp = 1
 damage = 1
+max_mp = 100
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 5 )
@@ -32,6 +34,7 @@ speed = 1
 characterName = "P2C4"
 max_hp = 1
 damage = 1
+max_mp = 100
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 5 )
@@ -39,6 +42,7 @@ speed = 1
 characterName = "P1C1"
 max_hp = 5
 damage = 1
+max_mp = 100
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 5 )
@@ -46,6 +50,7 @@ speed = 1
 characterName = "P1C2"
 max_hp = 5
 damage = 1
+max_mp = 100
 
 [sub_resource type="Resource" id=7]
 resource_local_to_scene = true
@@ -54,6 +59,7 @@ speed = 2
 characterName = "P1C3"
 max_hp = 5
 damage = 1
+max_mp = 100
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 5 )
@@ -61,30 +67,32 @@ speed = 1
 characterName = "P1C4"
 max_hp = 5
 damage = 1
+max_mp = 100
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-actions = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
+actions = [ ExtResource( 7 ), ExtResource( 8 ) ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TurnOrder" parent="CanvasLayer" instance=ExtResource( 3 )]
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -258.0
-margin_top = 16.0
-margin_right = -16.0
-margin_bottom = 208.0
+[node name="ActionContainer" type="MarginContainer" parent="CanvasLayer"]
+margin_left = 822.0
+margin_top = 34.0
+margin_right = 1057.0
+margin_bottom = 238.0
 
-[node name="ReferenceRect" type="ReferenceRect" parent="CanvasLayer/MarginContainer"]
-margin_right = 242.0
-margin_bottom = 192.0
+[node name="ReferenceRect" type="ReferenceRect" parent="CanvasLayer/ActionContainer"]
+margin_right = 235.0
+margin_bottom = 204.0
 
-[node name="ActionList" parent="CanvasLayer/MarginContainer" instance=ExtResource( 6 )]
+[node name="ActionList" parent="CanvasLayer/ActionContainer" instance=ExtResource( 6 )]
+margin_right = 235.0
+margin_bottom = 204.0
+size_flags_horizontal = 3
 
 [node name="ConfirmBox" type="MarginContainer" parent="CanvasLayer"]
 anchor_left = 0.5
@@ -105,11 +113,15 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -553.0
-margin_top = 53.0
+margin_top = 46.0
 margin_right = -265.0
-margin_bottom = -7.0
+margin_bottom = -10.0
+custom_constants/separation = 8
 
 [node name="CharacterSlot" parent="P2" instance=ExtResource( 11 )]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Joao" parent="P2/CharacterSlot" groups=["P2 Characters"] instance=ExtResource( 1 )]
 centered = false
@@ -118,8 +130,11 @@ __meta__ = {
 }
 
 [node name="CharacterSlot2" parent="P2" instance=ExtResource( 11 )]
-margin_top = 164.0
-margin_bottom = 324.0
+margin_top = 168.0
+margin_bottom = 328.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CharacterNode5" parent="P2/CharacterSlot2" groups=["P2 Characters"] instance=ExtResource( 4 )]
 position = Vector2( 100, 32 )
@@ -128,8 +143,11 @@ centered = false
 character = SubResource( 4 )
 
 [node name="CharacterSlot3" parent="P2" instance=ExtResource( 11 )]
-margin_top = 328.0
-margin_bottom = 488.0
+margin_top = 336.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CharacterNode6" parent="P2/CharacterSlot3" groups=["P2 Characters"] instance=ExtResource( 4 )]
 position = Vector2( 100, 32 )
@@ -138,8 +156,11 @@ centered = false
 character = SubResource( 5 )
 
 [node name="CharacterSlot4" parent="P2" instance=ExtResource( 11 )]
-margin_top = 492.0
-margin_bottom = 652.0
+margin_top = 504.0
+margin_bottom = 664.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CharacterNode8" parent="P2/CharacterSlot4" groups=["P2 Characters"] instance=ExtResource( 4 )]
 position = Vector2( 100, 32 )
@@ -150,27 +171,37 @@ character = SubResource( 6 )
 [node name="P1" type="VBoxContainer" parent="."]
 anchor_bottom = 1.0
 margin_left = 87.0
-margin_top = 53.0
+margin_top = 46.0
 margin_right = 375.0
-margin_bottom = -7.0
+margin_bottom = -14.0
+custom_constants/separation = 8
 
 [node name="CharacterSlot" parent="P1" instance=ExtResource( 11 )]
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CharacterNode1" parent="P1/CharacterSlot" groups=["P1 Characters"] instance=ExtResource( 1 )]
 centered = false
 character = SubResource( 1 )
 
 [node name="CharacterSlot2" parent="P1" instance=ExtResource( 11 )]
-margin_top = 164.0
-margin_bottom = 324.0
+margin_top = 168.0
+margin_bottom = 328.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CharacterNode2" parent="P1/CharacterSlot2" groups=["P1 Characters"] instance=ExtResource( 1 )]
 centered = false
 character = SubResource( 2 )
 
 [node name="CharacterSlot3" parent="P1" instance=ExtResource( 11 )]
-margin_top = 328.0
-margin_bottom = 488.0
+margin_top = 336.0
+margin_bottom = 496.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CharacterNode3" parent="P1/CharacterSlot3" groups=["P1 Characters"] instance=ExtResource( 4 )]
 position = Vector2( 82, 94 )
@@ -178,10 +209,18 @@ centered = false
 character = SubResource( 7 )
 
 [node name="CharacterSlot4" parent="P1" instance=ExtResource( 11 )]
-margin_top = 492.0
-margin_bottom = 652.0
+margin_top = 504.0
+margin_bottom = 664.0
 
 [node name="CharacterNode4" parent="P1/CharacterSlot4" groups=["P1 Characters"] instance=ExtResource( 4 )]
 position = Vector2( 82, 96 )
 centered = false
 character = SubResource( 3 )
+
+[node name="ConfirmButton" parent="." instance=ExtResource( 12 )]
+
+[node name="ConfirmButton" parent="ConfirmButton" instance=ExtResource( 12 )]
+
+[node name="Button" type="Button" parent="."]
+margin_right = 12.0
+margin_bottom = 20.0

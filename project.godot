@@ -14,7 +14,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actions/Action.gd"
 }, {
-"base": "VBoxContainer",
+"base": "ScrollContainer",
 "class": "ActionList",
 "language": "GDScript",
 "path": "res://Actions/ActionList.gd"
@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actions/Attack.gd"
 }, {
+"base": "Control",
+"class": "BarUI",
+"language": "GDScript",
+"path": "res://Character/Special/BarUI.gd"
+}, {
 "base": "Resource",
 "class": "Character",
 "language": "GDScript",
@@ -39,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Character/CharacterNode.gd"
 }, {
+"base": "Control",
+"class": "CharacterSlot",
+"language": "GDScript",
+"path": "res://Character/CharacterSlot.gd"
+}, {
 "base": "Action",
 "class": "Defend",
 "language": "GDScript",
@@ -48,6 +58,11 @@ _global_script_classes=[ {
 "class": "EnemyTarget",
 "language": "GDScript",
 "path": "res://Actions/Selectors/Targets/Enemy.gd"
+}, {
+"base": "Action",
+"class": "MultiOptionAction",
+"language": "GDScript",
+"path": "res://Actions/MultiOptionAction/MultiOptionAction.gd"
 }, {
 "base": "Resource",
 "class": "Selector",
@@ -64,6 +79,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actions/Selectors/SingleTargetSelector.gd"
 }, {
+"base": "Node2D",
+"class": "SpecialNode",
+"language": "GDScript",
+"path": "res://Character/Special/SpecialNode.gd"
+}, {
+"base": "Action",
+"class": "SpellAction",
+"language": "GDScript",
+"path": "res://Actions/Spells/SpellAction.gd"
+}, {
 "base": "Resource",
 "class": "Target",
 "language": "GDScript",
@@ -79,13 +104,18 @@ _global_script_class_icons={
 "ActionList": "",
 "AllTargetSelector": "",
 "Attack": "",
+"BarUI": "",
 "Character": "",
 "CharacterNode": "",
+"CharacterSlot": "",
 "Defend": "",
 "EnemyTarget": "",
+"MultiOptionAction": "",
 "Selector": "",
 "Self": "",
 "SingleTargetSelector": "",
+"SpecialNode": "",
+"SpellAction": "",
 "Target": "",
 "TurnOrder": ""
 }
@@ -99,6 +129,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GlobalTree="*res://Tree.gd"
+EffectPlayer="*res://World/Effects/EffectPlayer.tscn"
 
 [display]
 

@@ -1,7 +1,11 @@
 class_name ActionList
-extends VBoxContainer
+extends ScrollContainer
+
+onready var actionList = $ActionList
 
 var active: Action = null
+
+var buttons = {}
 
 func add_action(action: Action):
 	var button = Button.new()
@@ -9,10 +13,16 @@ func add_action(action: Action):
 	button.connect("pressed", self, "set_active", [action])
 	if action.shortcut:
 		button.shortcut = action.shortcut
-	add_child(button)
+	actionList.add_child(button)
+	buttons[action] = button
 
 func set_active(value: Action):
 	if active:
 		active.active = false
 	value.active = true
 	active = value
+
+func remove_action(action: Action):
+	var button = buttons[action]
+	actionList.remove_child(button)
+	button.queue_free()

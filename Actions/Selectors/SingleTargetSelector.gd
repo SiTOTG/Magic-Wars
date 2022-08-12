@@ -12,9 +12,17 @@ func start_selection():
 	for character in inclusion:
 		if character is CharacterNode:
 			var button = Button.new()
-			button.rect_position = character.get_node("Top").global_position
-			button.text = "Target"
+			var char_ui = character.get_parent() as CharacterSlot
+			if char_ui:
+				var button_position = char_ui.get_node("TargetButtonPosition") as ReferenceRect
+				button.set_global_position(button_position.get_global_rect().position)
+			else:
+				button.rect_position = character.get_node("Top").global_position
 			ui.add_child(button)
+#			button.rect_position = character.get_node("Top").global_position
+#			ui.add_child(button)
+			button.text = "Target"
+			
 			if inclusion.size() == 1:
 				button.shortcut = ShortCut.new()
 				button.shortcut.shortcut = InputEventAction.new()
