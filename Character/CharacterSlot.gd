@@ -4,6 +4,7 @@ extends Control
 
 var character: CharacterNode = null
 var hpbar: TextureRect
+var mpbar: BarUI
 var current_hpbar: TextureRect
 var nameLabel: Label
 
@@ -13,6 +14,7 @@ func _ready():
 func init_ready():
 	hpbar = $hpbar
 	current_hpbar = $hpbar/current
+	mpbar = $SpecialContainer/VBoxContainer/mpbar
 	
 	for child in get_children():
 		if child is CharacterNode:
@@ -25,9 +27,11 @@ func init_character(child: CharacterNode):
 	character.centered = false
 # warning-ignore:return_value_discarded
 	character.connect("hp_updated", self, "_on_hp_updated")
+	character.connect("mp_updated", mpbar, "update_bar")
 	nameLabel = $NameLabel
 	nameLabel.text = character.character.characterName
 	update_hp_bar(character.hp, character.character.max_hp)
+	mpbar.update_bar(character.mp, character.character.max_mp)
 
 func _on_hp_updated(hp, max_hp):
 	update_hp_bar(hp, max_hp)

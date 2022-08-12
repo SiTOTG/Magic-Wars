@@ -5,10 +5,13 @@ export (Resource) var character = preload("res://Character/Dummy/Dummy.tres") as
 
 onready var animation_player = $AnimationPlayer
 onready var hp = character.max_hp setget set_hp
+onready var mp = character.max_mp setget set_mp
 onready var specials = $Specials
 
 signal death
 signal hp_updated(curhp, maxhp)
+signal mp_updated(curmp, maxmp)
+#signal cd_updated()
 
 # warning-ignore:export_hint_type_mistmatch
 export (NodePath) onready var special_path = "Specials/Magic" setget set_special
@@ -28,6 +31,9 @@ func set_hp(value):
 		emit_signal("death")
 		queue_free()
 
+func set_mp(value):
+	mp = int(clamp(value, 0, character.max_mp))
+	emit_signal("mp_updated", mp, character.max_mp)
 
 func attack(target: CharacterNode):
 	target.do_damage(character.damage)
