@@ -58,3 +58,6 @@ func do_deactivate():
 # warning-ignore:unused_argument
 func do_apply_action(targets: Array):
 	printerr("Action not implemented...")
+	
+func is_available() -> bool:
+	return true

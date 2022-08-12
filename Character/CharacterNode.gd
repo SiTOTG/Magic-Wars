@@ -53,3 +53,9 @@ func play_animation(animation: String):
 func set_special(value):
 	special_path = value
 	special = get_node_or_null(value)
+	
+func check_mp(value):
+	return value <= mp
+	
+func cast_spell():
+	pass
