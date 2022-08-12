@@ -5,8 +5,9 @@ const ActionListPackedScene = preload("res://Actions/ActionList.tscn")
 
 var options: Array = [] setget set_options
 
-var actionList = null
+var actionList: ActionList = null
 var vBoxContainer: VBoxContainer = null
+var previous_action_list: ActionList
 
 func set_characters(value):
 	.set_characters(value)
@@ -33,13 +34,21 @@ func add_option(option: Resource):
 # warning-ignore:return_value_discarded
 	option.connect("finished_action", self, "finish_action")
 
+func find_current_action_list() -> ActionList:
+	var action_container = ui.find_node("ActionContainer")
+	for child in action_container.get_children():
+		if child is ActionList and child.visible:
+			return child
+	printerr("No action list visible!!")
+	return null
+
 func do_activate():
 	vBoxContainer = VBoxContainer.new()
 	actionList = ActionListPackedScene.instance()
 	actionList.size_flags_vertical = Control.SIZE_EXPAND_FILL
-	var current_action_list: ActionList = ui.find_node("ActionList")
-	current_action_list.visible = false
-	var actionContainer = current_action_list.get_parent()
+	previous_action_list = find_current_action_list()
+	previous_action_list.visible = false
+	var actionContainer = previous_action_list.get_parent()
 	actionContainer.add_child(vBoxContainer)
 	vBoxContainer.add_child(actionList)
 	var backButton = Button.new()
@@ -57,12 +66,11 @@ func finish_action():
 	emit_signal("finished_action")
 	
 func do_deactivate():
-	var current_action_list: ActionList = ui.find_node("ActionList")
 	for child in actionList.get_children():
 		if child is Action:
 			actionList.remove_action(child)
 	actionList.visible = false
-	current_action_list.visible = true
-	current_action_list.get_parent().remove_child(vBoxContainer)
+	previous_action_list.visible = true
+	previous_action_list.get_parent().remove_child(vBoxContainer)
 	actionList.queue_free()
 	vBoxContainer.queue_free()

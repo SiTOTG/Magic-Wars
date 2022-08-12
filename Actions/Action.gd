@@ -53,7 +53,7 @@ func do_activate():
 	selector.start_selection()
 
 func do_deactivate():
-		selector.clear_selection()
+	selector.clear_selection()
 
 # warning-ignore:unused_argument
 func do_apply_action(targets: Array):
