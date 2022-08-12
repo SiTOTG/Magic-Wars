@@ -30,6 +30,7 @@ func set_options(value):
 
 func add_option(option: Resource):
 	options.append(option)
+# warning-ignore:return_value_discarded
 	option.connect("finished_action", self, "finish_action")
 
 func do_activate():
