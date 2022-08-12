@@ -129,6 +129,7 @@ config/icon="res://icon.png"
 [autoload]
 
 GlobalTree="*res://Tree.gd"
+EffectPlayer="*res://World/Effects/EffectPlayer.gd"
 
 [display]
 
