@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="HealEffect" type="CPUParticles2D"]
+emitting = false
+amount = 100
+one_shot = true
+randomness = 1.0
+emission_shape = 2
+emission_rect_extents = Vector2( 10, 1 )
+direction = Vector2( 1, 1 )
+spread = 90.0
+initial_velocity = 1.84
+linear_accel = 1.17
+color = Color( 0.47451, 0.92549, 0.364706, 0.54902 )

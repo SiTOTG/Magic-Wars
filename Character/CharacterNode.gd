@@ -35,8 +35,8 @@ func set_mp(value):
 	mp = int(clamp(value, 0, character.max_mp))
 	emit_signal("mp_updated", mp, character.max_mp)
 
-func attack(target: CharacterNode):
-	target.do_damage(character.damage)
+func attack(target: CharacterNode, var flat_damage: int, var damage_scale: int):
+	target.do_damage(flat_damage+damage_scale*character.damage)
 
 func do_damage(damage: int):
 	if not is_defending:

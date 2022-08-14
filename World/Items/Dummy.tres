@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=8 format=2]
+
+[ext_resource path="res://World/Items/Item.gd" type="Script" id=1]
+[ext_resource path="res://Assets/items/dummy.png" type="Texture" id=2]
+[ext_resource path="res://Actions/Selectors/Targets/Enemy.tres" type="Resource" id=3]
+[ext_resource path="res://Actions/Selectors/SingleTargetSelector.gd" type="Script" id=4]
+[ext_resource path="res://Actions/Attack.gd" type="Script" id=5]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+exclude = [  ]
+include = [ ExtResource( 3 ) ]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 5 )
+selector = SubResource( 1 )
+active = false
+action_name = "Action"
+attack_animation = "Attack"
+optional_chain = [  ]
+flat_damage = 0
+damage_scale = 1
+
+[resource]
+script = ExtResource( 1 )
+icon = ExtResource( 2 )
+item_name = "Item"
+action = SubResource( 2 )

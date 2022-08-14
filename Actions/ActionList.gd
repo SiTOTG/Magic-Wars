@@ -11,6 +11,7 @@ func add_action(action: Action):
 	var button = Button.new()
 	button.text = action.action_name
 	button.connect("pressed", self, "set_active", [action])
+	button
 	if action.shortcut:
 		button.shortcut = action.shortcut
 	actionList.add_child(button)

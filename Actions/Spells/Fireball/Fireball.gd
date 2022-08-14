@@ -20,5 +20,4 @@ func do_apply_action(targets):
 		tween.tween_callback(fireball, "cast")
 		tween.tween_property(fireball, "global_position", character.global_position + character.get_rect().size/2, 0.6)
 		tween.tween_callback(fireball, "explode")
-		origin.attack(character)
-
+		origin.attack(character, 1, 0)

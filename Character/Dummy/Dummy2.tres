@@ -8,5 +8,5 @@ script = ExtResource( 2 )
 speed = 2
 characterName = "P1C3"
 max_hp = 5
-damage = 1
+damage = 3
 max_mp = 100

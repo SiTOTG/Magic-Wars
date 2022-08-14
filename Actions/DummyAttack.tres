@@ -24,3 +24,5 @@ action_name = "Attack"
 shortcut = SubResource( 2 )
 attack_animation = "Attack"
 optional_chain = [  ]
+flat_damage = 0
+damage_scale = 1

@@ -20,7 +20,6 @@ func init_ready():
 			init_character(child)
 			break
 
-
 func init_character(child: CharacterNode):
 	character = child
 	character.centered = false
@@ -30,8 +29,8 @@ func init_character(child: CharacterNode):
 	character.connect("mp_updated", mpbar, "update_bar")
 	nameLabel = $NameLabel
 	nameLabel.text = character.character.characterName
-	hpbar.update_bar(character.hp, character.character.max_hp)
-	mpbar.update_bar(character.mp, character.character.max_mp)
+	hpbar.call_deferred("update_bar", character.hp, character.character.max_hp)
+	mpbar.call_deferred("update_bar", character.mp, character.character.max_mp)
 
 #	current_hpbar.rect_size.x = int(hp_rate*hpbar.rect_size.x)
 
