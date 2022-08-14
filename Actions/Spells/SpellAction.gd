@@ -8,7 +8,7 @@ func is_available():
 	var origin = turn_order.current_turn as CharacterNode
 	return origin.check_mp(manacost)
 
-func do_apply_action(targets):
+func do_apply_action(_targets):
 	var origin = turn_order.current_turn as CharacterNode
 	origin.mp -= manacost
 	

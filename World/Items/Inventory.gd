@@ -16,31 +16,31 @@ func _ready():
 		slot.connect("selected_item", self, "_on_item_selected")
 		slot.connect("hovered", self, "_on_slot_hovered", [slot])
 
-
-func _process(delta):
+func _process(_delta):
 	var origin = focus.get_position_in_parent()
 	var pos = origin
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("Accept"):
 		if focus and focus.item:
 			emit_signal("item_selected", focus.item)
-	if Input.is_action_just_pressed("ui_right"):
+	if Input.is_action_just_pressed("Right"):
 		pos = (origin + 1) % slots.get_child_count()
-	elif Input.is_action_just_pressed("ui_left"):
+	elif Input.is_action_just_pressed("Left"):
 		pos = origin - 1 if pos > 0 else slots.get_child_count()-1
-	elif Input.is_action_just_pressed("ui_up"):
+	elif Input.is_action_just_pressed("Up"):
 		pos = origin - slots.columns
 		if pos < 0:
 			pos = slots.get_child_count() + pos
-	elif Input.is_action_just_pressed("ui_down"):
+	elif Input.is_action_just_pressed("Down"):
 		pos = (origin + slots.columns) % slots.get_child_count()
 	if origin != pos:
 		var new = slots.get_children()[pos]
-#		if new.item:
-#			focus = new
+		if CURSOR_AVOID_EMPTY_SLOT and new.item:
+			focus = new
 		update_focus(new)
 
 func update_focus(new):
-	focus.focus = false
+	for slot in slots.get_children():
+		slot.focus = false
 	new.focus = true
 	focus = new
 

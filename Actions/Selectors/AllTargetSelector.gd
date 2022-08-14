@@ -9,9 +9,10 @@ const ConfirmButton = preload("res://Actions/Selectors/ConfirmButton.tscn")
 const default_include = preload("res://Actions/Selectors/Targets/Enemy.tres")
 
 func _init():
-	confirm_button = ConfirmButton.instance()
-	confirm_button.text = "Confirm Attack All"
-	confirm_button.connect("pressed", self, "_confirm_callback")
+	if not Engine.editor_hint:
+		confirm_button = ConfirmButton.instance()
+		confirm_button.text = "Confirm Attack All"
+		confirm_button.connect("pressed", self, "_confirm_callback")
 
 func start_selection():
 	if not self.ui:

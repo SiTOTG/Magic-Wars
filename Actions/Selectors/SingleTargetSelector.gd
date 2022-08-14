@@ -26,7 +26,7 @@ func start_selection():
 			if inclusion.size() == 1:
 				button.shortcut = ShortCut.new()
 				button.shortcut.shortcut = InputEventAction.new()
-				button.shortcut.shortcut.action = "ui_accept"
+				button.shortcut.shortcut.action = "Accept"
 			button.connect("pressed", self, "selection_callback", [character])
 			temp_buttons.append(button)
 

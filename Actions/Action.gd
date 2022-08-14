@@ -33,6 +33,11 @@ func _init():
 		selector.turn_order = turn_order
 		selector.ui = ui
 
+func init(action):
+	self.characters = action.characters
+	self.turn_order = action.turn_order
+	self.ui = action.ui
+
 func set_active(value):
 	if active == value:
 		return
