@@ -39,11 +39,10 @@ func init(action):
 	self.ui = action.ui
 
 func set_active(value):
-	if active == value:
-		return
+	var reactivation = value == active
 	active = value
 	if active:
-		do_activate()
+		do_activate(reactivation)
 	else:
 		do_deactivate()
 
@@ -54,7 +53,8 @@ func _apply_action(targets: Array):
 
 
 ## Extension points
-func do_activate():
+func do_activate(reactivation: bool):
+	if reactivation: return
 	selector.start_selection()
 
 func do_deactivate():

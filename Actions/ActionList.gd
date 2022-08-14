@@ -17,7 +17,7 @@ func add_action(action: Action):
 	buttons[action] = button
 
 func set_active(value: Action):
-	if active:
+	if active and value != active:
 		active.active = false
 	value.active = true
 	active = value

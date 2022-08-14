@@ -42,7 +42,8 @@ func find_current_action_list() -> ActionList:
 	printerr("No action list visible!!")
 	return null
 
-func do_activate():
+func do_activate(reactivation):
+	if reactivation: return
 	vBoxContainer = VBoxContainer.new()
 	actionList = ActionListPackedScene.instance()
 	actionList.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -66,6 +67,8 @@ func finish_action():
 	emit_signal("finished_action")
 	
 func do_deactivate():
+	if not actionList:
+		return
 	for child in actionList.get_children():
 		if child is Action:
 			actionList.remove_action(child)
@@ -74,3 +77,5 @@ func do_deactivate():
 	previous_action_list.get_parent().remove_child(vBoxContainer)
 	actionList.queue_free()
 	vBoxContainer.queue_free()
+	actionList = null
+	vBoxContainer = null
