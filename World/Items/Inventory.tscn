@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/font/PublicSans-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://World/Items/HealthVial.tres" type="Resource" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://World/Items/Inventory.gd" type="Script" id=7]
 [ext_resource path="res://Assets/items/Potion3.png" type="Texture" id=8]
 [ext_resource path="res://World/Items/Bomb.tres" type="Resource" id=9]
+[ext_resource path="res://Assets/items/PurgingPotion.png" type="Texture" id=10]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 6 )
@@ -79,9 +80,8 @@ script = ExtResource( 3 )
 item_slot = SubResource( 2 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 8 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot"]
 margin_left = 7.0
@@ -101,9 +101,8 @@ script = ExtResource( 3 )
 item_slot = SubResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot2"]
-position = Vector2( 24, 34 )
-texture = ExtResource( 4 )
-centered = false
+position = Vector2( 40, 60 )
+texture = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot2"]
 margin_left = 7.0
@@ -122,9 +121,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot3"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot3"]
 margin_left = 7.0
@@ -143,9 +141,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot4"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot4"]
 margin_left = 7.0
@@ -164,9 +161,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot5"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot5"]
 margin_left = 7.0
@@ -185,9 +181,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot6"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot6"]
 margin_left = 7.0
@@ -207,9 +202,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot7"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot7"]
 margin_left = 7.0
@@ -229,9 +223,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot8"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot8"]
 margin_left = 7.0
@@ -251,9 +244,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot9"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot9"]
 margin_left = 7.0
@@ -273,9 +265,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot10"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot10"]
 margin_left = 7.0
@@ -294,9 +285,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot11"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot11"]
 margin_left = 7.0
@@ -316,9 +306,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot12"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot12"]
 margin_left = 7.0
@@ -338,9 +327,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot13"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot13"]
 margin_left = 7.0
@@ -360,9 +348,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot14"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot14"]
 margin_left = 7.0
@@ -382,9 +369,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot15"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot15"]
 margin_left = 7.0
@@ -403,9 +389,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot16"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot16"]
 margin_left = 7.0
@@ -425,9 +410,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot17"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot17"]
 margin_left = 7.0
@@ -447,9 +431,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot18"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot18"]
 margin_left = 7.0
@@ -469,9 +452,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot19"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot19"]
 margin_left = 7.0
@@ -491,9 +473,8 @@ size_flags_vertical = 3
 script = ExtResource( 3 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot20"]
-position = Vector2( 24, 34 )
+position = Vector2( 40, 60 )
 texture = ExtResource( 4 )
-centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot20"]
 margin_left = 7.0
