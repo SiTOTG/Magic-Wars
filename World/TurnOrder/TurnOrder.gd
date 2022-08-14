@@ -5,8 +5,8 @@ onready var character_list_ui = $ListArea/CharacterList
 onready var current_turn_indicator = $CurrentTurnIndicator
 
 var players = {
-	"P1 Characters" : Player.new(),
-	"P2 Characters" : Player.new()
+	"P1 Characters" : PlayerTurnInfo.new(),
+	"P2 Characters" : PlayerTurnInfo.new()
 }
 
 var current_turn: CharacterNode = null
@@ -103,14 +103,14 @@ func go_to_next_turn():
 
 func _on_character_death(character: CharacterNode):
 	var player_name = get_player(character)
-	var player: Player = players[player_name]
+	var player: PlayerTurnInfo = players[player_name]
 	player.remove_character(character)
 	if player_name == get_player(current_turn):
 		current_turn = player.get_current()
 	calculate_turn_order()
 	update_ui()
 
-class Player:
+class PlayerTurnInfo:
 	var turn_order: Array = []
 	var current: int = 0
 	
@@ -145,8 +145,8 @@ class Player:
 		current = current % turn_order.size()
 		return current
 
-	func copy() -> Player:
-		var new = Player.new()
+	func copy() -> PlayerTurnInfo:
+		var new = PlayerTurnInfo.new()
 		new.turn_order = turn_order.duplicate()
 		new.current = current
 		return new

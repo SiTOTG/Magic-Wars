@@ -44,7 +44,6 @@ func do_damage(damage: int):
 
 func start_turn():
 	is_defending = false
-	
 
 func play_animation(animation: String):
 	animation_player.play(animation)

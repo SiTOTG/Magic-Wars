@@ -1,12 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Assets/font/PublicSans-Bold.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://World/Items/HealthVial.tres" type="Resource" id=2]
-[ext_resource path="res://World/Items/ItemSlot.gd" type="Script" id=3]
+[ext_resource path="res://World/Items/ItemSlotUI.gd" type="Script" id=3]
 [ext_resource path="res://Assets/items/dummy.png" type="Texture" id=4]
 [ext_resource path="res://Assets/items/border.png" type="Texture" id=5]
-[ext_resource path="res://Assets/items/Potion3.png" type="Texture" id=6]
+[ext_resource path="res://World/Items/ItemSlot.gd" type="Script" id=6]
 [ext_resource path="res://World/Items/Inventory.gd" type="Script" id=7]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 6 )
+item = ExtResource( 2 )
+remaining = 0
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -64,11 +69,11 @@ margin_bottom = 91.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 3 )
-item = ExtResource( 2 )
+item_slot = SubResource( 2 )
 
 [node name="Icon" type="Sprite" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot"]
 position = Vector2( 24, 34 )
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 centered = false
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Panel/MarginContainer/Slots/ItemSlot"]

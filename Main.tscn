@@ -137,7 +137,7 @@ __meta__ = {
 }
 
 [node name="CharacterNode5" parent="P2/CharacterSlot2" groups=["P2 Characters"] instance=ExtResource( 4 )]
-position = Vector2( 100, 32 )
+position = Vector2( 100, 30 )
 texture = ExtResource( 10 )
 centered = false
 character = SubResource( 4 )

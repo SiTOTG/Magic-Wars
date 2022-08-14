@@ -20,8 +20,8 @@ func _process(_delta):
 	var origin = focus.get_position_in_parent()
 	var pos = origin
 	if Input.is_action_just_pressed("Accept"):
-		if focus and focus.item:
-			emit_signal("item_selected", focus.item)
+		if focus and focus.item_slot:
+			emit_signal("item_selected", focus.item_slot.item)
 	if Input.is_action_just_pressed("Right"):
 		pos = (origin + 1) % slots.get_child_count()
 	elif Input.is_action_just_pressed("Left"):
@@ -34,7 +34,7 @@ func _process(_delta):
 		pos = (origin + slots.columns) % slots.get_child_count()
 	if origin != pos:
 		var new = slots.get_children()[pos]
-		if CURSOR_AVOID_EMPTY_SLOT and new.item:
+		if CURSOR_AVOID_EMPTY_SLOT and new.item_slot:
 			focus = new
 		update_focus(new)
 
