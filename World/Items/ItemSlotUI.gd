@@ -18,8 +18,11 @@ func _ready():
 		$Icon.texture = item_slot.item.icon
 
 func set_item(value):
-	if value and get_node_or_null("Icon"):
-		$Icon.texture = value.item.icon
+	if get_node_or_null("Icon"):
+		if value:
+			$Icon.texture = value.item.icon
+		else:
+			$Icon.texture = null
 	item_slot = value
 
 func set_focus(value):

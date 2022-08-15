@@ -1,6 +1,7 @@
 extends Control
 
 export (Array, Resource) var actions = []
+export (Array, Resource) var players = []
 
 onready var turn_order = $CanvasLayer/TurnOrder
 onready var action_list = $CanvasLayer/ActionContainer/ActionList

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Character/Dummy/CharacterNode1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -34,14 +34,6 @@ speed = 1
 characterName = "P2C4"
 max_hp = 1
 damage = 3
-max_mp = 100
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 5 )
-speed = 1
-characterName = "P1C1"
-max_hp = 5
-damage = 1
 max_mp = 100
 
 [sub_resource type="Resource" id=2]
@@ -183,7 +175,6 @@ __meta__ = {
 
 [node name="CharacterNode1" parent="P1/CharacterSlot" groups=["P1 Characters"] instance=ExtResource( 1 )]
 centered = false
-character = SubResource( 1 )
 
 [node name="CharacterSlot2" parent="P1" instance=ExtResource( 11 )]
 margin_top = 168.0
