@@ -23,8 +23,12 @@ func _on_item_selected(item: Item):
 	self.active = false
 	self.action = item.action.duplicate(true)
 	self.action.init(self)
+	self.action.connect("finished_action", self, "_on_item_used")
 
 	self.action.active = true
+
+func _on_item_used():
+	emit_signal("finished_action")
 
 func do_deactivate():
 	if inventory:
