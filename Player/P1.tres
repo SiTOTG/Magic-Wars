@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=6 format=2]
+[gd_resource type="Resource" load_steps=8 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Character/Dummy/Dummy.tres" type="Resource" id=2]
+[ext_resource path="res://World/Items/HealthVial.tres" type="Resource" id=3]
 [ext_resource path="res://World/Items/ItemSlot.gd" type="Script" id=4]
 [ext_resource path="res://World/Items/Bomb.tres" type="Resource" id=5]
 
@@ -10,8 +11,13 @@ script = ExtResource( 4 )
 item = ExtResource( 5 )
 remaining = 2
 
+[sub_resource type="Resource" id=2]
+script = ExtResource( 4 )
+item = ExtResource( 3 )
+remaining = 0
+
 [resource]
 script = ExtResource( 1 )
 characters = [ ExtResource( 2 ) ]
-item_slots = [ SubResource( 1 ) ]
+item_slots = [ SubResource( 1 ), SubResource( 2 ) ]
 player_group = "P1 Characters"

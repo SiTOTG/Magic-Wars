@@ -47,7 +47,9 @@ func _input(event):
 		and event.button_index == BUTTON_LEFT\
 		and event.pressed\
 		and item_slot\
-		and hovering:
+		and hovering\
+		and item_slot.remaining != 0:
+		item_slot.remaining -= 1
 		emit_signal("selected_item", item_slot.item)
 	elif event is InputEventMouseMotion and hovering and not focus:
 		emit_signal("hovered")
@@ -56,3 +58,8 @@ func _draw():
 	if focus:
 		var rect = Rect2(Vector2.ZERO, rect_size)
 		draw_rect(rect, Color.white, false, 3.0)
+	if item_slot and item_slot.remaining == 0:
+		var rect = Rect2(Vector2.ZERO, rect_size)
+		var color := Color.gray
+		color.a = 0.7
+		draw_rect(rect, color, true)
