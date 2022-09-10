@@ -1,6 +1,9 @@
 extends Control
 
+const CharacterNodeScene = preload("res://Character/CharacterNode.tscn")
+
 export (Array, Resource) var actions = []
+export (Array, Resource) var players = []
 
 onready var turn_order = $CanvasLayer/TurnOrder
 onready var action_list = $CanvasLayer/ActionContainer/ActionList
@@ -8,6 +11,19 @@ onready var action_list = $CanvasLayer/ActionContainer/ActionList
 var game_over: = false
 
 func _ready():
+	for player in players:
+		player = player as Player
+		var character_slot_list = $P1 if player.player_group == "P1 Characters" else $P2
+		var slot = 0
+		for character in player.characters:
+			var character_node = CharacterNodeScene.instance()
+			character_node.character = character
+			character_node.add_to_group(player.player_group)
+			character_node.player = player
+			var character_slot: CharacterSlot = character_slot_list.get_child(slot)
+			character_slot.add_child(character_node)
+			character_slot.init_ready()
+			slot += 1
 	for action in actions:
 		init_action(action)
 		action_list.add_action(action)
@@ -15,6 +31,7 @@ func _ready():
 		if character is CharacterNode:
 			init_action(character.special.get_action())
 			character.connect("death", self, "_check_gameover_condition")
+	turn_order.setup()
 	action_list.add_action(turn_order.current_turn.special.get_action())
 
 func init_action(action):

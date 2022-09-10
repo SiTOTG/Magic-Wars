@@ -15,6 +15,7 @@ func do_activate(reactivation):
 	else:
 		inventory = Inventory.instance()
 		ui.add_child(inventory)
+		inventory.items = turn_order.current_turn.player.item_slots
 	# warning-ignore:return_value_discarded
 		inventory.connect("item_selected", self, "_on_item_selected")
 	
@@ -23,8 +24,12 @@ func _on_item_selected(item: Item):
 	self.active = false
 	self.action = item.action.duplicate(true)
 	self.action.init(self)
+	self.action.connect("finished_action", self, "_on_item_used")
 
 	self.action.active = true
+
+func _on_item_used():
+	emit_signal("finished_action")
 
 func do_deactivate():
 	if inventory:

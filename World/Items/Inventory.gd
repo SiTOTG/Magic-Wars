@@ -5,9 +5,18 @@ signal item_selected(item)
 
 onready var slots: = $MarginContainer/Panel/MarginContainer/Slots
 
+export (Array) var items = [] setget set_items
 export (bool) var CURSOR_AVOID_EMPTY_SLOT = false
 
 var focus: Panel
+
+func set_items(value):
+	items = value
+	for index in range(slots.get_child_count()):
+		if index < items.size():
+			slots.get_children()[index].item_slot = items[index]
+		else:
+			slots.get_children()[index].item_slot = null
 
 func _ready():
 	focus = slots.get_children()[0]

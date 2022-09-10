@@ -18,11 +18,17 @@ export (NodePath) onready var special_path = "Specials/Magic" setget set_special
 
 var special: SpecialNode
 var is_defending = false
+var player: Player
 
 func _ready():
+	setup()
+
+func setup():
 	for special_node in specials.get_children():
 		special_node.character = character
 	special = get_node(special_path)
+	hp = character.max_hp
+	mp = character.max_mp
 
 func set_hp(value):
 	hp = int(clamp(value, 0, character.max_hp))

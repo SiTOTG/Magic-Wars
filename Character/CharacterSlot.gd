@@ -8,6 +8,7 @@ var mpbar: BarUI
 var current_hpbar: TextureRect
 var nameLabel: Label
 
+
 func _ready():
 	init_ready()
 
@@ -32,8 +33,6 @@ func init_character(child: CharacterNode):
 	if not Engine.editor_hint:
 		hpbar.update_bar(character.hp, character.character.max_hp)
 		mpbar.update_bar(character.mp, character.character.max_mp)
-
-#	current_hpbar.rect_size.x = int(hp_rate*hpbar.rect_size.x)
 
 func _get_configuration_warning():
 	for child in get_children():

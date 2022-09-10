@@ -15,13 +15,12 @@ var global_turn_order: Array = []
 
 export (int, 1, 20) var max_display_turns = 8
 
-func _ready():
+func setup():
 	for group in players:
 		for character_node in get_tree().get_nodes_in_group(group):
 			if character_node is CharacterNode:
 				players[group].add_character(character_node)
 				character_node.connect("death", self, "_on_character_death", [character_node])
-
 		players[group].turn_order.sort_custom(SpeedSorter, "sort_speed")
 
 	if players["P1 Characters"].get_top_speed() > players["P2 Characters"].get_top_speed():
