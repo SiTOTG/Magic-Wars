@@ -15,6 +15,7 @@ func do_activate(reactivation):
 	else:
 		inventory = Inventory.instance()
 		ui.add_child(inventory)
+		inventory.items = turn_order.current_turn.player.item_slots
 	# warning-ignore:return_value_discarded
 		inventory.connect("item_selected", self, "_on_item_selected")
 	
