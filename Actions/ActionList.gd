@@ -24,5 +24,7 @@ func set_active(value: Action):
 
 func remove_action(action: Action):
 	var button = buttons[action]
+	if action.active:
+		action.active = false
 	actionList.remove_child(button)
 	button.queue_free()

@@ -69,9 +69,8 @@ func finish_action():
 func do_deactivate():
 	if not actionList:
 		return
-	for child in actionList.get_children():
-		if child is Action:
-			actionList.remove_action(child)
+	for action in options:
+		if action.active: action.active = false
 	actionList.visible = false
 	previous_action_list.visible = true
 	previous_action_list.get_parent().remove_child(vBoxContainer)
