@@ -9,3 +9,4 @@ characterName = "Joao"
 max_hp = 5
 damage = 2
 max_mp = 100
+point_cost = 3

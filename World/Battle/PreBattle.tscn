@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://World/Battle/PreBattle.gd" type="Script" id=1]
+[ext_resource path="res://World/Battle/PreBattle/SingleCharacterView.tscn" type="PackedScene" id=2]
 
 [node name="PreBattle" type="Control"]
 anchor_right = 1.0
@@ -30,6 +31,13 @@ margin_right = -13.0
 margin_bottom = 167.0
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Selector/Party/CharacterSelector"]
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="SingleCharacterView" parent="Selector/Party/CharacterSelector" instance=ExtResource( 2 )]
+
+[node name="GridCharacterView" type="Panel" parent="Selector/Party/CharacterSelector"]
+visible = false
 margin_right = 1023.0
 margin_bottom = 469.0
 
