@@ -15,3 +15,4 @@ script = ExtResource( 1 )
 characters = [ ExtResource( 2 ) ]
 item_slots = [ SubResource( 1 ) ]
 player_group = "P2 Characters"
+buy_points = 50
