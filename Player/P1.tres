@@ -47,11 +47,13 @@ point_cost = 3
 script = ExtResource( 4 )
 item = ExtResource( 5 )
 remaining = 2
+stacks = 0
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 4 )
 item = ExtResource( 3 )
 remaining = 0
+stacks = 0
 
 [resource]
 script = ExtResource( 1 )

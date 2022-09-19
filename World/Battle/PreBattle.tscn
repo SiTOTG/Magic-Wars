@@ -2,7 +2,7 @@
 
 [ext_resource path="res://World/Battle/PreBattle.gd" type="Script" id=1]
 [ext_resource path="res://World/Battle/PreBattle/SingleCharacterView.tscn" type="PackedScene" id=2]
-[ext_resource path="res://World/Items/Inventory.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Battle/PreBattle/SingleItemSelect.tscn" type="PackedScene" id=3]
 
 [node name="PreBattle" type="Control"]
 anchor_right = 1.0
@@ -21,11 +21,30 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 
-[node name="Panel" type="Panel" parent="Selector/Inventory"]
+[node name="ItemSelector" type="MarginContainer" parent="Selector/Inventory"]
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+margin_left = -1036.0
+margin_top = -302.0
+margin_right = -13.0
+margin_bottom = 167.0
 
-[node name="InventoryScreen" parent="Selector/Inventory/Panel" instance=ExtResource( 3 )]
+[node name="ReferenceRect" type="ReferenceRect" parent="Selector/Inventory/ItemSelector"]
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="SingleItemView" parent="Selector/Inventory/ItemSelector" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="GridItemView" type="Panel" parent="Selector/Inventory/ItemSelector"]
+visible = false
+margin_right = 1023.0
+margin_bottom = 469.0
 
 [node name="Party" type="Panel" parent="Selector"]
 visible = false
