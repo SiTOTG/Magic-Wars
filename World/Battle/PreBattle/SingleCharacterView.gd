@@ -3,8 +3,8 @@ extends Panel
 export (Resource) var player = preload("res://Player/P1.tres") setget set_player
 export var current := 0
 
-signal character_selected(character, curernt_points, all_selected_characters)
-signal character_unselected(character, curernt_points, all_selected_characters)
+signal character_selected(character, current_points, all_selected_characters)
+signal character_unselected(character, current_points, all_selected_characters)
 
 onready var characters = player.characters
 onready var selected_characters = []

@@ -11,12 +11,14 @@
 script = ExtResource( 6 )
 item = ExtResource( 9 )
 remaining = 3
+stacks = 0
 
 [sub_resource type="Resource" id=3]
 resource_local_to_scene = true
 script = ExtResource( 6 )
 item = ExtResource( 2 )
 remaining = 0
+stacks = 0
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
