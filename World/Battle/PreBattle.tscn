@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://World/Battle/PreBattle.gd" type="Script" id=1]
 [ext_resource path="res://World/Battle/PreBattle/SingleCharacterView.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Battle/PreBattle/SingleItemSelect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Battle/CharacterPreview.gd" type="Script" id=4]
 
 [node name="PreBattle" type="Control"]
 anchor_right = 1.0
@@ -14,6 +15,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Inventory" type="Panel" parent="Selector"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -47,7 +49,6 @@ margin_right = 1023.0
 margin_bottom = 469.0
 
 [node name="Party" type="Panel" parent="Selector"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -81,52 +82,73 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Selector/Party"]
+[node name="Preview" type="HBoxContainer" parent="Selector/Party"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 36.0
 margin_top = -154.0
 margin_right = 676.0
 margin_bottom = -18.0
+script = ExtResource( 4 )
 
-[node name="Panel" type="Panel" parent="Selector/Party/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Selector/Party/Preview"]
 margin_right = 157.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 
-[node name="ColorRect" type="ColorRect" parent="Selector/Party/HBoxContainer/Panel"]
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Panel2" type="Panel" parent="Selector/Party/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
+
+[node name="Panel2" type="Panel" parent="Selector/Party/Preview"]
 margin_left = 161.0
 margin_right = 318.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 
-[node name="ColorRect" type="ColorRect" parent="Selector/Party/HBoxContainer/Panel2"]
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Panel3" type="Panel" parent="Selector/Party/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
+
+[node name="Panel3" type="Panel" parent="Selector/Party/Preview"]
 margin_left = 322.0
 margin_right = 479.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 
-[node name="ColorRect" type="ColorRect" parent="Selector/Party/HBoxContainer/Panel3"]
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Panel4" type="Panel" parent="Selector/Party/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
+
+[node name="Panel4" type="Panel" parent="Selector/Party/Preview"]
 margin_left = 483.0
 margin_right = 640.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 
-[node name="ColorRect" type="ColorRect" parent="Selector/Party/HBoxContainer/Panel4"]
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
 
 [node name="Overlay" type="MarginContainer" parent="."]
 anchor_top = 0.5
@@ -142,3 +164,6 @@ __meta__ = {
 [node name="ReferenceRect" type="ReferenceRect" parent="Overlay"]
 margin_right = 366.0
 margin_bottom = 136.0
+
+[connection signal="character_selected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_selected"]
+[connection signal="character_unselected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_unselected"]
