@@ -5,7 +5,10 @@ signal player_changed(player)
 export (Array, Resource) var players: Array setget set_players
 
 func _ready():
+	if PlayersInfo.players.size() > 0:
+		players = PlayersInfo.players
 	_setup()
+# warning-ignore:return_value_discarded
 	get_popup().connect("id_pressed", self, "_on_player_id_pressed")
 
 func set_players(value):
@@ -23,7 +26,7 @@ func _setup():
 	text = players[0].player_group
 	for player in players:
 		player = player as Player
-		var menu_item = popup.add_item(player.player_group)
+		popup.add_item(player.player_group)
 
 func _on_player_id_pressed(id):
 	var player_group = get_popup().get_item_text(id)

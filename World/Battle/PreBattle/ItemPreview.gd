@@ -26,11 +26,11 @@ func update_ui():
 		slot.item_slot = cur_item
 		slot.item_slot.remaining = cur_item.item.stack_size * cur_item.stacks
 
-func _on_SingleItemView_item_selected(item: ItemSlot, current_points, current_stack_size: int, all_selected_items):
+func _on_SingleItemView_item_selected(item: ItemSlot, _current_points, current_stack_size: int, _all_selected_items):
 	update_preview(item, current_stack_size)
 
 
-func _on_SingleItemView_item_unselected(item: ItemSlot, current_points, current_stack_size: int, all_selected_item):
+func _on_SingleItemView_item_unselected(item: ItemSlot, _current_points, current_stack_size: int, _all_selected_item):
 	update_preview(item, current_stack_size)
 
 

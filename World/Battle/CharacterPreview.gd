@@ -9,11 +9,11 @@ func update_preview(characters):
 		else:
 			textureRect.texture = null
 
-func _on_SingleCharacterView_character_selected(character: Character, current_points, all_selected_characters):
+func _on_SingleCharacterView_character_selected(_character: Character, _current_points, all_selected_characters):
 	update_preview(all_selected_characters)
 
 
-func _on_SingleCharacterView_character_unselected(character, current_points, all_selected_characters):
+func _on_SingleCharacterView_character_unselected(_character, _current_points, all_selected_characters):
 	update_preview(all_selected_characters)
 
 
