@@ -1,4 +1,5 @@
 tool
+class_name ItemSlotUI
 extends Panel
 
 export (Resource) var item_slot setget set_item

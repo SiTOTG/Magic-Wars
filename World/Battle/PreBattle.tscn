@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://World/Battle/PreBattle.gd" type="Script" id=1]
 [ext_resource path="res://World/Battle/PreBattle/SingleCharacterView.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/Battle/PreBattle/SingleItemSelect.tscn" type="PackedScene" id=3]
 [ext_resource path="res://World/Battle/CharacterPreview.gd" type="Script" id=4]
+[ext_resource path="res://World/Items/ItemSlotUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Battle/PreBattle/ItemPreview.gd" type="Script" id=6]
 
 [node name="PreBattle" type="Control"]
 anchor_right = 1.0
@@ -15,7 +17,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Inventory" type="Panel" parent="Selector"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -48,7 +49,64 @@ visible = false
 margin_right = 1023.0
 margin_bottom = 469.0
 
+[node name="ItemPreview" type="HBoxContainer" parent="Selector/Inventory"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -131.0
+margin_right = 684.0
+margin_bottom = -37.0
+script = ExtResource( 6 )
+
+[node name="ItemSlot" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_right = 80.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot2" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 84.0
+margin_right = 165.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot3" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 169.0
+margin_right = 249.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot4" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 253.0
+margin_right = 334.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot5" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 338.0
+margin_right = 418.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot6" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 422.0
+margin_right = 503.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot7" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 507.0
+margin_right = 587.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot8" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 591.0
+margin_right = 672.0
+margin_bottom = 94.0
+item_slot = null
+
 [node name="Party" type="Panel" parent="Selector"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -165,5 +223,7 @@ __meta__ = {
 margin_right = 366.0
 margin_bottom = 136.0
 
+[connection signal="item_selected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_selected"]
+[connection signal="item_unselected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_unselected"]
 [connection signal="character_selected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_selected"]
 [connection signal="character_unselected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_unselected"]
