@@ -52,6 +52,7 @@ func _on_finished_action():
 
 func _check_gameover_condition():
 	yield(get_tree(),"idle_frame")
+	# await get_tree().idle_frame
 	if game_over:
 		return
 	var size = get_tree().get_nodes_in_group("P1 Characters").size()
@@ -72,6 +73,6 @@ func _check_gameover_condition():
 	if size == 0:
 		print("P1 Wins!!!")
 		var timer = get_tree().create_timer(3)
-		timer.connect("timeout", get_tree(), "reload_current_scene")
+		timer.connect("timeout", get_tree(), "change_scene", ["res://World/MainMenu/MainMenu.tscn"])
 		game_over = true
 		return
