@@ -5,9 +5,10 @@ export var current := 0
 
 signal character_selected(character, current_points, all_selected_characters)
 signal character_unselected(character, current_points, all_selected_characters)
+signal character_batch_update(selected_characters)
 
 onready var characters = player.characters
-onready var selected_characters = []
+onready var selected_characters = player.selected_characters
 
 onready var select_button = $Select
 
@@ -15,8 +16,10 @@ func set_player(value):
 	player = value
 	if player:
 		characters = player.characters
+		selected_characters = player.selected_characters
+	emit_signal("character_batch_update", selected_characters)
 	current = 0
-	selected_characters = []
+	update()
 
 func _ready():
 	update()

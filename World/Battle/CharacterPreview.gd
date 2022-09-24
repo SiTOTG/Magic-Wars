@@ -15,3 +15,7 @@ func _on_SingleCharacterView_character_selected(character: Character, current_po
 
 func _on_SingleCharacterView_character_unselected(character, current_points, all_selected_characters):
 	update_preview(all_selected_characters)
+
+
+func _on_SingleCharacterView_character_batch_update(selected_characters):
+	update_preview(selected_characters)

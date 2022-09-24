@@ -32,3 +32,8 @@ func _on_SingleItemView_item_selected(item: ItemSlot, current_points, current_st
 
 func _on_SingleItemView_item_unselected(item: ItemSlot, current_points, current_stack_size: int, all_selected_item):
 	update_preview(item, current_stack_size)
+
+
+func _on_SingleItemView_item_batch_update(selected_items):
+	item_list = selected_items
+	update_ui()

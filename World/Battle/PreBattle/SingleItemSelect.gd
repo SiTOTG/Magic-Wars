@@ -5,6 +5,7 @@ export var current := 0
 
 signal item_selected(item, current_points, current_stack_size, all_selected_items)
 signal item_unselected(item, current_points, current_stack_size, all_selected_item)
+signal item_batch_update(selected_items)
 
 onready var items = player.item_slots
 
@@ -16,6 +17,12 @@ func set_player(value):
 	if player:
 		items = player.item_slots
 	current = 0
+	var selected_items = []
+	for item in player.item_slots:
+		if item.stacks > 0:
+			selected_items.append(item)
+	emit_signal("item_batch_update", selected_items)
+	update()
 
 func _ready():
 	update()
