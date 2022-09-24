@@ -1,23 +1,31 @@
 extends Control
 
 const CharacterNodeScene = preload("res://Character/CharacterNode.tscn")
+const GameOverScene = preload("res://World/Battle/GameOver/GameOver.tscn")
 
 export (Array, Resource) var actions = []
 export (Array, Resource) var players = []
 
 onready var turn_order = $CanvasLayer/TurnOrder
 onready var action_list = $CanvasLayer/ActionContainer/ActionList
+onready var battle_ui = $CanvasLayer
 
 var game_over: = false
+var statistics: BattleStatistics
 
 func _ready():
+	statistics = BattleStatistics.new()
 	if PlayersInfo.players.size() > 0:
 		players = PlayersInfo.players
 	for player in players:
 		player = player as Player
+		var player_statistics = BattleStatistics.PlayerStats.new()
+		statistics.players[player.player_group] = player_statistics
 		var character_slot_list = $P1 if player.player_group == "P1 Characters" else $P2
 		var slot = 0
 		for character in player.selected_characters:
+			var character_statistics = BattleStatistics.CharacterStats.new()
+			player_statistics.character_stats[slot] = character_statistics
 			var character_node = CharacterNodeScene.instance()
 			character_node.character = character
 			character_node.add_to_group(player.player_group)
@@ -55,24 +63,28 @@ func _check_gameover_condition():
 	# await get_tree().idle_frame
 	if game_over:
 		return
-	var size = get_tree().get_nodes_in_group("P1 Characters").size()
-	if size == 0:
-		if get_tree().get_nodes_in_group("P2 Characters").size() == 0 :
-			print("DRAW!?")
-			var timer = get_tree().create_timer(3)
-			timer.connect("timeout", get_tree(), "reload_current_scene")
-			game_over = true
-			return
-		else:
-			print("P2 Wins!!!")
-			var timer = get_tree().create_timer(3)
-			timer.connect("timeout", get_tree(), "reload_current_scene")
-			game_over = true
-			return
-	size = get_tree().get_nodes_in_group("P2 Characters").size()
-	if size == 0:
-		print("P1 Wins!!!")
-		var timer = get_tree().create_timer(3)
-		timer.connect("timeout", get_tree(), "change_scene", ["res://World/MainMenu/MainMenu.tscn"])
+	var size_p1 = get_tree().get_nodes_in_group("P1 Characters").size()
+	var size_p2 = get_tree().get_nodes_in_group("P2 Characters").size()
+	if size_p1 == 0 and size_p2 == 0:
 		game_over = true
+		statistics.players["P2 Characters"].winner = true
+		statistics.players["P1 Characters"].winner = true
+	elif size_p1 == 0:
+		game_over = true
+		statistics.players["P2 Characters"].winner = true
+		statistics.players["P1 Characters"].winner = false
+	elif size_p2 == 0:
+		game_over = true
+		statistics.players["P2 Characters"].winner = false
+		statistics.players["P1 Characters"].winner = true
+	if game_over:
+		var game_over_scene = GameOverScene.instance()
+		statistics.number_of_turns = turn_order.turn_number
+		game_over_scene.statistics = statistics
+		get_tree().root.add_child(game_over_scene)
+		visible = false
+		battle_ui.visible = false
+		game_over_scene.start()
+#		var timer = get_tree().create_timer(3)
+#		timer.connect("timeout", get_tree(), "change_scene", ["res://World/MainMenu/MainMenu.tscn"])
 		return
