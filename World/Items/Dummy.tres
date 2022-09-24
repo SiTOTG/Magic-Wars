@@ -25,4 +25,7 @@ damage_scale = 1
 script = ExtResource( 1 )
 icon = ExtResource( 2 )
 item_name = "Item"
+description = "Description"
 action = SubResource( 2 )
+stack_size = 2
+max_stacks = 5

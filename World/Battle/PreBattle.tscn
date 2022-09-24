@@ -1,0 +1,283 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://World/Battle/PreBattle.gd" type="Script" id=1]
+[ext_resource path="res://World/Battle/PreBattle/SingleCharacterView.tscn" type="PackedScene" id=2]
+[ext_resource path="res://World/Battle/PreBattle/SingleItemSelect.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Battle/CharacterPreview.gd" type="Script" id=4]
+[ext_resource path="res://World/Items/ItemSlotUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://World/Battle/PreBattle/ItemPreview.gd" type="Script" id=6]
+[ext_resource path="res://Assets/font/PublicSans-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://World/Battle/PreBattle/PointsLabel.gd" type="Script" id=8]
+[ext_resource path="res://World/Battle/PreBattle/SelectPlayerMenu.gd" type="Script" id=9]
+[ext_resource path="res://Player/P2.tres" type="Resource" id=10]
+[ext_resource path="res://Player/P1.tres" type="Resource" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 50
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
+font_data = ExtResource( 7 )
+
+[node name="PreBattle" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Selector" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Inventory" type="Panel" parent="Selector"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ItemSelector" type="MarginContainer" parent="Selector/Inventory"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -1036.0
+margin_top = -302.0
+margin_right = -13.0
+margin_bottom = 167.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Selector/Inventory/ItemSelector"]
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="SingleItemView" parent="Selector/Inventory/ItemSelector" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="GridItemView" type="Panel" parent="Selector/Inventory/ItemSelector"]
+visible = false
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="ItemPreview" type="HBoxContainer" parent="Selector/Inventory"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_top = -131.0
+margin_right = 684.0
+margin_bottom = -37.0
+script = ExtResource( 6 )
+
+[node name="ItemSlot" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_right = 80.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot2" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 84.0
+margin_right = 165.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot3" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 169.0
+margin_right = 249.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot4" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 253.0
+margin_right = 334.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot5" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 338.0
+margin_right = 418.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot6" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 422.0
+margin_right = 503.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot7" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 507.0
+margin_right = 587.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="ItemSlot8" parent="Selector/Inventory/ItemPreview" instance=ExtResource( 5 )]
+margin_left = 591.0
+margin_right = 672.0
+margin_bottom = 94.0
+item_slot = null
+
+[node name="Party" type="Panel" parent="Selector"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="CharacterSelector" type="MarginContainer" parent="Selector/Party"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -1036.0
+margin_top = -302.0
+margin_right = -13.0
+margin_bottom = 167.0
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Selector/Party/CharacterSelector"]
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="SingleCharacterView" parent="Selector/Party/CharacterSelector" instance=ExtResource( 2 )]
+
+[node name="GridCharacterView" type="Panel" parent="Selector/Party/CharacterSelector"]
+visible = false
+margin_right = 1023.0
+margin_bottom = 469.0
+
+[node name="FullScreenPreview" type="Panel" parent="Selector/Party"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Preview" type="HBoxContainer" parent="Selector/Party"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
+margin_top = -154.0
+margin_right = 676.0
+margin_bottom = -18.0
+script = ExtResource( 4 )
+
+[node name="Panel" type="Panel" parent="Selector/Party/Preview"]
+margin_right = 157.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
+
+[node name="Panel2" type="Panel" parent="Selector/Party/Preview"]
+margin_left = 161.0
+margin_right = 318.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
+
+[node name="Panel3" type="Panel" parent="Selector/Party/Preview"]
+margin_left = 322.0
+margin_right = 479.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
+
+[node name="Panel4" type="Panel" parent="Selector/Party/Preview"]
+margin_left = 483.0
+margin_right = 640.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Selector/Party/Preview/Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TextureRect" type="TextureRect" parent="Selector/Party/Preview/Panel4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch_mode = 1
+
+[node name="Overlay" type="MarginContainer" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 697.0
+margin_top = 202.0
+margin_right = 1013.0
+margin_bottom = 309.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="ReferenceRect" type="ReferenceRect" parent="Overlay"]
+margin_right = 316.0
+margin_bottom = 107.0
+
+[node name="OverlayItems" type="HBoxContainer" parent="Overlay"]
+margin_right = 316.0
+margin_bottom = 107.0
+
+[node name="PointsLabel" type="Label" parent="Overlay/OverlayItems"]
+margin_top = 23.0
+margin_right = 160.0
+margin_bottom = 83.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = SubResource( 1 )
+text = "12"
+script = ExtResource( 8 )
+
+[node name="StartBattleButton" type="Button" parent="Overlay/OverlayItems"]
+margin_left = 164.0
+margin_right = 316.0
+margin_bottom = 107.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Start Battle"
+
+[node name="SelectPlayerMenu" type="MenuButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -181.0
+margin_bottom = 32.0
+text = "Player 1"
+items = [ "Player1", null, 0, false, false, 0, 0, null, "", false, "Player2", null, 0, false, false, 1, 0, null, "", false ]
+script = ExtResource( 9 )
+players = [ ExtResource( 11 ), ExtResource( 10 ) ]
+
+[connection signal="item_batch_update" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_batch_update"]
+[connection signal="item_selected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_selected"]
+[connection signal="item_selected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleItemView_item_selected"]
+[connection signal="item_unselected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_unselected"]
+[connection signal="item_unselected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleItemView_item_unselected"]
+[connection signal="character_batch_update" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_batch_update"]
+[connection signal="character_selected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_selected"]
+[connection signal="character_selected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleCharacterView_character_selected"]
+[connection signal="character_unselected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_unselected"]
+[connection signal="character_unselected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleCharacterView_character_unselected"]
+[connection signal="pressed" from="Overlay/OverlayItems/StartBattleButton" to="." method="_on_StartBattleButton_pressed"]
+[connection signal="player_changed" from="SelectPlayerMenu" to="." method="_on_SelectPlayerMenu_player_changed"]

@@ -25,4 +25,7 @@ damage_scale = 0
 script = ExtResource( 1 )
 icon = ExtResource( 2 )
 item_name = "Health Vial"
+description = "Description"
 action = SubResource( 2 )
+stack_size = 5
+max_stacks = 10

@@ -79,6 +79,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://World/Items/ItemSlot.gd"
 }, {
+"base": "Panel",
+"class": "ItemSlotUI",
+"language": "GDScript",
+"path": "res://World/Items/ItemSlotUI.gd"
+}, {
 "base": "Action",
 "class": "MultiOptionAction",
 "language": "GDScript",
@@ -139,6 +144,7 @@ _global_script_class_icons={
 "Item": "",
 "ItemAction": "",
 "ItemSlot": "",
+"ItemSlotUI": "",
 "MultiOptionAction": "",
 "Player": "",
 "Selector": "",
@@ -153,13 +159,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Magic Wars"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://World/Battle/PreBattle.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 GlobalTree="*res://Tree.gd"
 EffectPlayer="*res://World/Effects/EffectPlayer.tscn"
+PlayersInfo="*res://Player/PlayersInfo.gd"
 
 [display]
 

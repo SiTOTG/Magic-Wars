@@ -1,23 +1,69 @@
-[gd_resource type="Resource" load_steps=8 format=2]
+[gd_resource type="Resource" load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://Character/Dummy/Dummy.tres" type="Resource" id=2]
 [ext_resource path="res://World/Items/HealthVial.tres" type="Resource" id=3]
 [ext_resource path="res://World/Items/ItemSlot.gd" type="Script" id=4]
 [ext_resource path="res://World/Items/Bomb.tres" type="Resource" id=5]
+[ext_resource path="res://Character/Character.gd" type="Script" id=6]
+[ext_resource path="res://icon.png" type="Texture" id=7]
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 6 )
+speed = 2
+characterName = "Jorge"
+max_hp = 7
+damage = 1
+max_mp = 150
+point_cost = 3
+icon = ExtResource( 7 )
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 6 )
+speed = 1
+characterName = "Joaquim"
+max_hp = 10
+damage = 1
+max_mp = 100
+point_cost = 5
+icon = ExtResource( 7 )
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 6 )
+speed = 1
+characterName = "Joacir"
+max_hp = 3
+damage = 4
+max_mp = 100
+point_cost = 5
+icon = ExtResource( 7 )
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 6 )
+speed = 1
+characterName = "Jeronimo"
+max_hp = 3
+damage = 1
+max_mp = 100
+point_cost = 3
+icon = ExtResource( 7 )
 
 [sub_resource type="Resource" id=1]
 script = ExtResource( 4 )
 item = ExtResource( 5 )
 remaining = 2
+stacks = 0
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 4 )
 item = ExtResource( 3 )
 remaining = 0
+stacks = 0
 
 [resource]
 script = ExtResource( 1 )
-characters = [ ExtResource( 2 ) ]
-item_slots = [ SubResource( 1 ), SubResource( 2 ) ]
+characters = [ ExtResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ]
 player_group = "P1 Characters"
+item_slots = [ SubResource( 1 ), SubResource( 2 ) ]
+selected_characters = [ ExtResource( 2 ), SubResource( 5 ) ]
+buy_points = 20

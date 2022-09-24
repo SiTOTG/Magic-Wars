@@ -1,21 +1,21 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://Player/P1.tres" type="Resource" id=1]
+[ext_resource path="res://Character/CharacterSlot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://World/TurnOrder/TurnOrder.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Actions/ActionList.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Actions/DummyAttack.tres" type="Resource" id=7]
-[ext_resource path="res://Actions/DummyDefend.tres" type="Resource" id=8]
-[ext_resource path="res://Actions/ItemAction/ItemAction.tres" type="Resource" id=9]
-[ext_resource path="res://Character/CharacterSlot.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Player/P1.tres" type="Resource" id=12]
-[ext_resource path="res://Player/P2.tres" type="Resource" id=13]
+[ext_resource path="res://Actions/ActionList.tscn" type="PackedScene" id=4]
+[ext_resource path="res://World/Battle/Battle.gd" type="Script" id=5]
+[ext_resource path="res://Actions/ItemAction/ItemAction.tres" type="Resource" id=6]
+[ext_resource path="res://Actions/DummyDefend.tres" type="Resource" id=7]
+[ext_resource path="res://Player/P2.tres" type="Resource" id=8]
+[ext_resource path="res://Actions/DummyAttack.tres" type="Resource" id=9]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
-actions = [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
-players = [ ExtResource( 12 ), ExtResource( 13 ) ]
+script = ExtResource( 5 )
+actions = [ ExtResource( 9 ), ExtResource( 7 ), ExtResource( 6 ) ]
+players = [ ExtResource( 1 ), ExtResource( 8 ) ]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -31,7 +31,7 @@ margin_bottom = 238.0
 margin_right = 235.0
 margin_bottom = 204.0
 
-[node name="ActionList" parent="CanvasLayer/ActionContainer" instance=ExtResource( 6 )]
+[node name="ActionList" parent="CanvasLayer/ActionContainer" instance=ExtResource( 4 )]
 margin_right = 235.0
 margin_bottom = 204.0
 size_flags_horizontal = 3
@@ -60,26 +60,26 @@ margin_right = -265.0
 margin_bottom = -10.0
 custom_constants/separation = 8
 
-[node name="CharacterSlot" parent="P2" instance=ExtResource( 11 )]
+[node name="CharacterSlot" parent="P2" instance=ExtResource( 2 )]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CharacterSlot2" parent="P2" instance=ExtResource( 11 )]
+[node name="CharacterSlot2" parent="P2" instance=ExtResource( 2 )]
 margin_top = 168.0
 margin_bottom = 328.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CharacterSlot3" parent="P2" instance=ExtResource( 11 )]
+[node name="CharacterSlot3" parent="P2" instance=ExtResource( 2 )]
 margin_top = 336.0
 margin_bottom = 496.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CharacterSlot4" parent="P2" instance=ExtResource( 11 )]
+[node name="CharacterSlot4" parent="P2" instance=ExtResource( 2 )]
 margin_top = 504.0
 margin_bottom = 664.0
 __meta__ = {
@@ -94,25 +94,25 @@ margin_right = 375.0
 margin_bottom = -14.0
 custom_constants/separation = 8
 
-[node name="CharacterSlot" parent="P1" instance=ExtResource( 11 )]
+[node name="CharacterSlot" parent="P1" instance=ExtResource( 2 )]
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CharacterSlot2" parent="P1" instance=ExtResource( 11 )]
+[node name="CharacterSlot2" parent="P1" instance=ExtResource( 2 )]
 margin_top = 168.0
 margin_bottom = 328.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CharacterSlot3" parent="P1" instance=ExtResource( 11 )]
+[node name="CharacterSlot3" parent="P1" instance=ExtResource( 2 )]
 margin_top = 336.0
 margin_bottom = 496.0
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CharacterSlot4" parent="P1" instance=ExtResource( 11 )]
+[node name="CharacterSlot4" parent="P1" instance=ExtResource( 2 )]
 margin_top = 504.0
 margin_bottom = 664.0
