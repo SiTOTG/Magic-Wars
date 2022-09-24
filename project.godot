@@ -166,6 +166,7 @@ config/icon="res://icon.png"
 
 GlobalTree="*res://Tree.gd"
 EffectPlayer="*res://World/Effects/EffectPlayer.tscn"
+PlayersInfo="*res://Player/PlayersInfo.gd"
 
 [display]
 

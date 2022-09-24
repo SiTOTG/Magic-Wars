@@ -47,8 +47,6 @@ func update_select_button_availability(character: Character):
 		return
 	if selected_characters.size() > 3 or character.point_cost > player.buy_points:
 		select_button.disabled = true
-	
-	
 
 func _on_Left_pressed():
 	if current == 0:
@@ -61,7 +59,6 @@ func _on_Left_pressed():
 func _on_Right_pressed():
 	current = (current + 1) % characters.size()
 	update()
-
 
 func _on_Select_pressed():
 	var character: Character = characters[current]

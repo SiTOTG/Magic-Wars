@@ -11,11 +11,13 @@ onready var action_list = $CanvasLayer/ActionContainer/ActionList
 var game_over: = false
 
 func _ready():
+	if PlayersInfo.players.size() > 0:
+		players = PlayersInfo.players
 	for player in players:
 		player = player as Player
 		var character_slot_list = $P1 if player.player_group == "P1 Characters" else $P2
 		var slot = 0
-		for character in player.characters:
+		for character in player.selected_characters:
 			var character_node = CharacterNodeScene.instance()
 			character_node.character = character
 			character_node.add_to_group(player.player_group)

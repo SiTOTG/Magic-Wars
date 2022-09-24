@@ -1,7 +1,9 @@
 extends Control
 
+const Battle = preload("res://World/Battle/Battle.tscn")
+
 var player: Player
-onready var pointsLabel := $Overlay/PointsLabel
+onready var pointsLabel := $Overlay/OverlayItems/PointsLabel
 onready var itemView := $Selector/Inventory/ItemSelector/SingleItemView
 onready var characterView := $Selector/Party/CharacterSelector/SingleCharacterView
 
@@ -15,7 +17,11 @@ func setup():
 	pointsLabel._setup(player)
 	characterView.player = player
 
-
 func _on_SelectPlayerMenu_player_changed(player):
 	self.player = player
 	setup()
+
+
+func _on_StartBattleButton_pressed():
+	PlayersInfo.players = $SelectPlayerMenu.players
+	get_tree().change_scene("res://World/Battle/Battle.tscn")

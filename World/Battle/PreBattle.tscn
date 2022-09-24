@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://World/Battle/PreBattle.gd" type="Script" id=1]
 [ext_resource path="res://World/Battle/PreBattle/SingleCharacterView.tscn" type="PackedScene" id=2]
@@ -14,6 +14,10 @@
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 25
 font_data = ExtResource( 7 )
 
 [node name="PreBattle" type="Control"]
@@ -222,24 +226,38 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 697.0
 margin_top = 202.0
-margin_right = 1063.0
-margin_bottom = 338.0
+margin_right = 1013.0
+margin_bottom = 309.0
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="ReferenceRect" type="ReferenceRect" parent="Overlay"]
-margin_right = 366.0
-margin_bottom = 136.0
+margin_right = 316.0
+margin_bottom = 107.0
 
-[node name="PointsLabel" type="Label" parent="Overlay"]
-margin_right = 366.0
-margin_bottom = 136.0
+[node name="OverlayItems" type="HBoxContainer" parent="Overlay"]
+margin_right = 316.0
+margin_bottom = 107.0
+
+[node name="PointsLabel" type="Label" parent="Overlay/OverlayItems"]
+margin_top = 23.0
+margin_right = 160.0
+margin_bottom = 83.0
 size_flags_horizontal = 3
-size_flags_vertical = 7
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.0
 custom_fonts/font = SubResource( 1 )
 text = "12"
 script = ExtResource( 8 )
+
+[node name="StartBattleButton" type="Button" parent="Overlay/OverlayItems"]
+margin_left = 164.0
+margin_right = 316.0
+margin_bottom = 107.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+text = "Start Battle"
 
 [node name="SelectPlayerMenu" type="MenuButton" parent="."]
 anchor_left = 1.0
@@ -253,12 +271,13 @@ players = [ ExtResource( 11 ), ExtResource( 10 ) ]
 
 [connection signal="item_batch_update" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_batch_update"]
 [connection signal="item_selected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_selected"]
-[connection signal="item_selected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Overlay/PointsLabel" method="_on_SingleItemView_item_selected"]
+[connection signal="item_selected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleItemView_item_selected"]
 [connection signal="item_unselected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Selector/Inventory/ItemPreview" method="_on_SingleItemView_item_unselected"]
-[connection signal="item_unselected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Overlay/PointsLabel" method="_on_SingleItemView_item_unselected"]
+[connection signal="item_unselected" from="Selector/Inventory/ItemSelector/SingleItemView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleItemView_item_unselected"]
 [connection signal="character_batch_update" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_batch_update"]
 [connection signal="character_selected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_selected"]
-[connection signal="character_selected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Overlay/PointsLabel" method="_on_SingleCharacterView_character_selected"]
+[connection signal="character_selected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleCharacterView_character_selected"]
 [connection signal="character_unselected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Selector/Party/Preview" method="_on_SingleCharacterView_character_unselected"]
-[connection signal="character_unselected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Overlay/PointsLabel" method="_on_SingleCharacterView_character_unselected"]
+[connection signal="character_unselected" from="Selector/Party/CharacterSelector/SingleCharacterView" to="Overlay/OverlayItems/PointsLabel" method="_on_SingleCharacterView_character_unselected"]
+[connection signal="pressed" from="Overlay/OverlayItems/StartBattleButton" to="." method="_on_StartBattleButton_pressed"]
 [connection signal="player_changed" from="SelectPlayerMenu" to="." method="_on_SelectPlayerMenu_player_changed"]
