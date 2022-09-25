@@ -14,6 +14,7 @@ var player_order: Array = []
 var global_turn_order: Array = []
 
 export (int, 1, 20) var max_display_turns = 8
+var turn_number = 0
 
 func setup():
 	for group in players:
@@ -97,6 +98,7 @@ func go_to_next_turn():
 		for player in players:
 			players[player].go_to_next_turn()
 	current_turn = players[next_player].get_current()
+	turn_number += 1
 	calculate_turn_order()
 	update_ui()
 
