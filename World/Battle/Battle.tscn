@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/P1.tres" type="Resource" id=1]
 [ext_resource path="res://Character/CharacterSlot.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Actions/DummyDefend.tres" type="Resource" id=7]
 [ext_resource path="res://Player/P2.tres" type="Resource" id=8]
 [ext_resource path="res://Actions/DummyAttack.tres" type="Resource" id=9]
+[ext_resource path="res://World/Settings/Settings.tscn" type="PackedScene" id=10]
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -47,6 +48,15 @@ margin_bottom = 34.0
 [node name="ReferenceRect" type="ReferenceRect" parent="CanvasLayer/ConfirmBox"]
 margin_right = 228.0
 margin_bottom = 23.0
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -112.0
+margin_top = 8.0
+margin_right = -12.0
+margin_bottom = 28.0
+text = "Settings"
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -116,3 +126,9 @@ __meta__ = {
 [node name="CharacterSlot4" parent="P1" instance=ExtResource( 2 )]
 margin_top = 504.0
 margin_bottom = 664.0
+
+[node name="Settings" parent="." instance=ExtResource( 10 )]
+visible = false
+
+[connection signal="pressed" from="CanvasLayer/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="hide" from="Settings" to="." method="_on_Settings_hide"]

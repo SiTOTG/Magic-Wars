@@ -9,6 +9,7 @@ export (Array, Resource) var players = []
 onready var turn_order = $CanvasLayer/TurnOrder
 onready var action_list = $CanvasLayer/ActionContainer/ActionList
 onready var battle_ui = $CanvasLayer
+onready var settingsScreen = $Settings
 
 var game_over: = false
 var statistics: BattleStatistics
@@ -85,6 +86,13 @@ func _check_gameover_condition():
 		visible = false
 		battle_ui.visible = false
 		game_over_scene.start()
-#		var timer = get_tree().create_timer(3)
-#		timer.connect("timeout", get_tree(), "change_scene", ["res://World/MainMenu/MainMenu.tscn"])
 		return
+
+
+func _on_SettingsButton_pressed():
+	settingsScreen.visible = true
+	battle_ui.visible = false
+
+
+func _on_Settings_hide():
+	battle_ui.visible = true
