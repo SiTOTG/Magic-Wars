@@ -13,6 +13,7 @@ onready var settingsScreen = $Settings
 
 var game_over: = false
 var statistics: BattleStatistics
+var characterStatisticsIndex: Dictionary = {}
 
 func _ready():
 	statistics = BattleStatistics.new()
@@ -31,6 +32,8 @@ func _ready():
 			character_node.character = character
 			character_node.add_to_group(player.player_group)
 			character_node.player = player
+			character_node.connect("damage_dealt", self, "_on_damage_dealt__collect_statistics")
+			characterStatisticsIndex[character_node] = character_statistics
 			var character_slot: CharacterSlot = character_slot_list.get_child(slot)
 			character_slot.add_child(character_node)
 			character_slot.init_ready()
@@ -58,6 +61,15 @@ func _on_finished_action():
 	if turn_order.current_turn:
 		turn_order.current_turn.start_turn()
 		action_list.add_action(turn_order.current_turn.special.get_action())
+
+func _on_damage_dealt__collect_statistics(origin: CharacterNode, target: CharacterNode, damage: int):
+	var origin_character_stats = characterStatisticsIndex[origin] as BattleStatistics.CharacterStats
+	var target_character_stats = characterStatisticsIndex[target] as BattleStatistics.CharacterStats
+	if damage > 0:
+		origin_character_stats.damage_dealt += damage
+		target_character_stats.damage_taken += damage
+	elif damage < 0:
+		origin_character_stats.damage_healed -= damage
 
 func _check_gameover_condition():
 	yield(get_tree(),"idle_frame")

@@ -24,6 +24,14 @@ func start():
 				winner = player_group
 			else:
 				winner = "Draw"
+		scores_to_show.append(Score.new(
+			"Damage dealt by " + player_group,
+			player.damage_dealt_total
+		))
+		scores_to_show.append(Score.new(
+			"Damage healed by " + player_group,
+			player.damage_healed_total
+		))
 	winnerItemValue.text = winner
 	scores_to_show.append(Score.new(
 		"Number of turns",

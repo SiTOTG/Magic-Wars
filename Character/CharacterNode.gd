@@ -11,7 +11,8 @@ onready var specials = $Specials
 signal death
 signal hp_updated(curhp, maxhp)
 signal mp_updated(curmp, maxmp)
-#signal cd_updated()
+
+signal damage_dealt(origin, target, damage)
 
 # warning-ignore:export_hint_type_mistmatch
 export (NodePath) onready var special_path = "Specials/Magic" setget set_special
@@ -42,11 +43,17 @@ func set_mp(value):
 	emit_signal("mp_updated", mp, character.max_mp)
 
 func attack(target: CharacterNode, var flat_damage: int, var damage_scale: int):
-	target.do_damage(flat_damage+damage_scale*character.damage)
+	var actual_damage = target.do_damage(flat_damage+damage_scale*character.damage)
+	emit_signal("damage_dealt", self, target, actual_damage)
 
-func do_damage(damage: int):
+
+func do_damage(damage: int) -> int:
 	if not is_defending:
-		self.hp -= damage
+		var new_hp = clamp(self.hp - damage, 0, character.max_hp)
+		var actual_damage = hp - new_hp
+		self.hp = new_hp
+		return actual_damage
+	return 0
 
 func start_turn():
 	is_defending = false
